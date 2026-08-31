@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const pillars = [
   {
     title: "Visión comercial.",
@@ -14,19 +16,8 @@ const pillars = [
 ];
 
 function PillarIcon({ index }: { index: number }) {
-  const icons = [
-    <svg key="globe" viewBox="0 0 88 88" aria-hidden className="about-icon h-20 w-20 fill-none stroke-black/80 stroke-[1.25]">
-      <circle cx="44" cy="44" r="38" /><ellipse cx="44" cy="44" rx="14" ry="38" /><ellipse cx="44" cy="44" rx="27" ry="38" /><path d="M8 29c21 11 51 11 72 0M6 44h76M8 59c21-11 51-11 72 0M15 16c17 12 41 12 58 0M15 72c17-12 41-12 58 0" />
-    </svg>,
-    <svg key="precision" viewBox="0 0 88 88" aria-hidden className="about-icon h-20 w-20 fill-none stroke-black/80 stroke-[1.25]">
-      <rect x="4" y="4" width="80" height="80" /><path d="M9 9 79 79M9 21l58 58M9 35l44 44M9 49l30 30M9 9l70 14v56" />
-    </svg>,
-    <svg key="collaboration" viewBox="0 0 88 88" aria-hidden className="about-icon h-20 w-20 fill-none stroke-black/80 stroke-[1.25]">
-      <polygon points="44,3 74,15 85,44 74,73 44,85 14,73 3,44 14,15" /><polygon points="44,11 68,23 77,44 68,65 44,77 20,65 11,44 20,23" /><path d="m44 3 24 62M74 15 20 65M85 44H3M74 73 20 23M44 85 68 23M14 73l60-58" />
-    </svg>,
-  ];
-
-  return icons[index];
+  const icons = ["/card-icons/vision.svg", "/card-icons/precision.svg", "/card-icons/collaboration.svg"];
+  return <Image src={icons[index]} alt="" width={80} height={81} className="about-icon h-20 w-20 object-contain" />;
 }
 
 export function About() {

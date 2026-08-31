@@ -17,6 +17,7 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
     let frameId = 0;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -30,12 +31,55 @@ export default function Home() {
       gsap.from(".hero-letter", { opacity: 0.001, filter: "blur(10px)", y: 10, duration: 0.58, stagger: 0.026, ease: "power2.out", delay: 0.28 });
       gsap.from(".hero-meta", { opacity: 0, filter: "blur(8px)", y: 10, duration: 0.65, ease: "power2.out", delay: 0.45 });
       gsap.to(".orb", { y: -80, x: 45, rotation: 25, ease: "none", scrollTrigger: { trigger: ".hero", scrub: 1 } });
-      gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
-        gsap.from(card, { y: 80, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: card, start: "top 82%" } });
+      gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
+        const card = stage.querySelector<HTMLElement>(".project-zoom-card");
+        const image = stage.querySelector<HTMLElement>(".project-image");
+
+        if (card) {
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: stage,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.35,
+              invalidateOnRefresh: true,
+            },
+          })
+            .fromTo(card, {
+              scale: 0.82,
+              borderRadius: 28,
+              transformOrigin: "center center",
+            }, {
+              scale: 1,
+              borderRadius: 0,
+              duration: 1,
+              ease: "none",
+            })
+            .to(card, {
+              scale: 0.58,
+              borderRadius: 32,
+              duration: 1,
+              ease: "none",
+            });
+        }
+
+        if (image) {
+          gsap.fromTo(image, { scale: 1.05 }, {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: stage,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        }
       });
       gsap.from(".about-heading", { opacity: 0, y: 60, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".about-heading", start: "top 75%" } });
       gsap.from(".about-card", { opacity: 0, y: 54, scale: 0.975, filter: "blur(5px)", stagger: 0.12, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: ".about-card", start: "top 82%" } });
       gsap.from(".about-icon", { opacity: 0, rotation: -14, scale: 0.82, transformOrigin: "50% 50%", stagger: 0.12, duration: 0.7, ease: "back.out(1.4)", scrollTrigger: { trigger: ".about-card", start: "top 82%" } });
+      gsap.to(".about-icon", { y: -10, duration: 1.55, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.08 });
       gsap.to(".brand-track", { xPercent: -50, duration: 24, repeat: -1, ease: "none" });
     }, root);
 
