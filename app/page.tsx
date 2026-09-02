@@ -8,15 +8,26 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Brands } from "@/components/brands";
 import { Projects } from "@/components/projects";
+import { Explorations } from "@/components/explorations";
+import { Faq } from "@/components/faq";
+import { ReadyCta } from "@/components/ready-cta";
 import { About } from "@/components/about";
 import { Footer } from "@/components/footer";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export default function Home() {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    // Same Lenis response used by the reference: a short, eased glide on wheel input.
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+      // Keep the same scrolling feel as the reference even when the OS
+      // accessibility preference is set to reduce motion.
+      respectReducedMotion: false,
+    });
     lenis.on("scroll", ScrollTrigger.update);
     let frameId = 0;
     const raf = (time: number) => {
@@ -51,13 +62,13 @@ export default function Home() {
               transformOrigin: "center center",
             }, {
               scale: 1,
-              borderRadius: 0,
+              borderRadius: 28,
               duration: 1,
               ease: "none",
             })
             .to(card, {
               scale: 0.58,
-              borderRadius: 32,
+              borderRadius: 28,
               duration: 1,
               ease: "none",
             });
@@ -81,6 +92,40 @@ export default function Home() {
       gsap.from(".about-icon", { opacity: 0, rotation: -14, scale: 0.82, transformOrigin: "50% 50%", stagger: 0.12, duration: 0.7, ease: "back.out(1.4)", scrollTrigger: { trigger: ".about-card", start: "top 82%" } });
       gsap.to(".about-icon", { y: -10, duration: 1.55, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.08 });
       gsap.to(".brand-track", { xPercent: -50, duration: 24, repeat: -1, ease: "none" });
+      gsap.from(".project-heading-letter", {
+        opacity: 0.001,
+        filter: "blur(10px)",
+        y: 10,
+        duration: 0.58,
+        stagger: 0.026,
+        ease: "power2.out",
+        scrollTrigger: { trigger: ".projects-section", start: "top 74%", once: true },
+      });
+      gsap.from(".faq-heading, .faq-contact-link", {
+        opacity: 0,
+        y: 36,
+        filter: "blur(6px)",
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".faq-section", start: "top 74%", once: true },
+      });
+      gsap.from(".faq-item", {
+        opacity: 0,
+        y: 22,
+        stagger: 0.09,
+        duration: 0.65,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".faq-section", start: "top 66%", once: true },
+      });
+      gsap.from(".ready-word", {
+        opacity: 0.001, y: 40, filter: "blur(10px)", duration: 0.85, ease: "power3.out",
+        scrollTrigger: { trigger: ".ready-cta", start: "top 78%", once: true },
+      });
+      gsap.from(".ready-copy, .ready-button", {
+        opacity: 0, y: 18, stagger: 0.12, duration: 0.6, ease: "power2.out",
+        scrollTrigger: { trigger: ".ready-cta", start: "top 72%", once: true },
+      });
     }, root);
 
     return () => {
@@ -92,13 +137,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main ref={root} className="overflow-hidden bg-[#191919] text-[#f5f5f3]">
+    <main ref={root} className="overflow-hidden bg-[#f7f7f5] text-[#191919]">
       <Navbar />
       <Hero />
       <Brands />
       <About />
       <Projects />
+      <Explorations />
+      <Faq />
+      <ReadyCta />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
