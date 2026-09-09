@@ -2,55 +2,30 @@ import Image from "next/image";
 
 const explorations = [
   {
-    image: "/pdf-projects/barbieri-render-hq.jpg",
-    alt: "Proyecto Barbieri",
-    position: "center",
+    "image": "/marquee/20260331_130614.jpg",
+    "alt": "Plano del stand VTH durante su construcción en taller",
+    "position": "center"
   },
   {
-    image: "/pdf-projects/vth-render-hq.jpg",
-    alt: "Proyecto VTH",
-    position: "center",
+    "image": "/marquee/20260331_125720.jpg",
+    "alt": "Fabricación de estructuras curvas en el taller",
+    "position": "center"
   },
   {
-    image: "/pdf-projects/argental-render-hq.jpg",
-    alt: "Proyecto Argental",
-    position: "center",
+    "image": "/marquee/20260407_194726.jpg",
+    "alt": "Montaje del stand VTH en La Rural",
+    "position": "center"
   },
   {
-    image: "/pdf-projects/fera-render-hq.jpg",
-    alt: "Proyecto Fera",
-    position: "center",
+    "image": "/marquee/20260529_161721.jpg",
+    "alt": "Equipo trabajando en el montaje de un stand",
+    "position": "center"
   },
   {
-    image: "/pdf-projects/biferdil-render-hq.jpg",
-    alt: "Proyecto Biferdil",
-    position: "center",
-  },
-  {
-    image: "/pdf-projects/barbieri-render-hq.jpg",
-    alt: "Proyecto Barbieri",
-    position: "center",
-  },
-  {
-    image: "/pdf-projects/vth-render-hq.jpg",
-    alt: "Proyecto VTH",
-    position: "center",
-  },
-  {
-    image: "/pdf-projects/argental-render-hq.jpg",
-    alt: "Proyecto Argental",
-    position: "center",
-  },
-  {
-    image: "/pdf-projects/fera-render-hq.jpg",
-    alt: "Proyecto Fera",
-    position: "center",
-  },
-  {
-    image: "/pdf-projects/biferdil-render-hq.jpg",
-    alt: "Proyecto Biferdil",
-    position: "center",
-  },
+    "image": "/marquee/20260721_124157.jpg",
+    "alt": "Trabajo de carpintería y terminaciones en taller",
+    "position": "center"
+  }
 ];
 
 export function Explorations() {
@@ -58,7 +33,7 @@ export function Explorations() {
     <section className="explorations overflow-hidden bg-[#f7f7f5] py-24 text-[#141411] md:py-32">
       <div className="mx-auto w-[calc(100%-40px)] max-w-[1280px]">
         <p className="mb-8 font-host text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:mb-12 md:text-[20px]">
-          <span className="text-[#ef3b32]">&#123;</span> EXPLORATIONS <span className="text-[#ef3b32]">&#125;</span>
+          <span className="text-[#ef3b32]">&#123;</span> NUESTRA VISIÓN <span className="text-[#ef3b32]">&#125;</span>
         </p>
 
         <div className="grid gap-8 md:grid-cols-[0.94fr_1.06fr] md:items-end md:gap-20">
@@ -78,17 +53,17 @@ export function Explorations() {
             <div className="explorations-group" aria-hidden={group === 1} key={group}>
               {explorations.map((exploration, index) => (
                 <figure
-                  className={`exploration-card relative h-[400px] w-[270px] shrink-0 overflow-hidden rounded-[22px] bg-[#d9d8d3] md:w-[390px] ${[
-                    "md:h-[400px] md:translate-y-[4px]",
-                    "md:h-[510px]",
-                    "md:h-[380px] md:translate-y-[-12px]",
-                    "md:h-[460px] md:translate-y-[2px]",
-                    "md:h-[400px] md:translate-y-[6px]",
-                    "md:h-[510px]",
-                    "md:h-[420px] md:translate-y-[-8px]",
-                    "md:h-[500px] md:translate-y-[4px]",
-                    "md:h-[410px] md:translate-y-[-4px]",
-                    "md:h-[470px] md:translate-y-[6px]",
+                  className={`exploration-card relative w-[270px] shrink-0 overflow-hidden rounded-[22px] bg-[#d9d8d3] md:w-[390px] ${[
+                    "h-[277px] md:h-[400px]",
+                    "h-[353px] md:h-[510px]",
+                    "h-[263px] md:h-[380px]",
+                    "h-[318px] md:h-[460px]",
+                    "h-[277px] md:h-[400px]",
+                    "h-[353px] md:h-[510px]",
+                    "h-[291px] md:h-[420px]",
+                    "h-[346px] md:h-[500px]",
+                    "h-[284px] md:h-[410px]",
+                    "h-[325px] md:h-[470px]",
                   ][index]}`}
                   key={`${group}-${index}-${exploration.image}`}
                 >

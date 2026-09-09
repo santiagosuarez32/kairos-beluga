@@ -12,6 +12,7 @@ import { Explorations } from "@/components/explorations";
 import { Faq } from "@/components/faq";
 import { ReadyCta } from "@/components/ready-cta";
 import { About } from "@/components/about";
+import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
@@ -24,6 +25,11 @@ export default function Home() {
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,
+      anchors: {
+        offset: -140,
+        duration: 1.4,
+        easing: (t: number) => 1 - Math.pow(1 - t, 3),
+      },
       // Keep the same scrolling feel as the reference even when the OS
       // accessibility preference is set to reduce motion.
       respectReducedMotion: false,
@@ -42,7 +48,7 @@ export default function Home() {
       gsap.from(".hero-letter", { opacity: 0.001, filter: "blur(10px)", y: 10, duration: 0.58, stagger: 0.026, ease: "power2.out", delay: 0.28 });
       gsap.from(".hero-meta", { opacity: 0, filter: "blur(8px)", y: 10, duration: 0.65, ease: "power2.out", delay: 0.45 });
       gsap.to(".orb", { y: -80, x: 45, rotation: 25, ease: "none", scrollTrigger: { trigger: ".hero", scrub: 1 } });
-      gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
+      if (window.matchMedia("(min-width: 768px)").matches) gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
         const card = stage.querySelector<HTMLElement>(".project-zoom-card");
         const image = stage.querySelector<HTMLElement>(".project-image");
 
@@ -57,7 +63,7 @@ export default function Home() {
             },
           })
             .fromTo(card, {
-              scale: 0.82,
+              scale: 0.92,
               borderRadius: 28,
               transformOrigin: "center center",
             }, {
@@ -67,7 +73,7 @@ export default function Home() {
               ease: "none",
             })
             .to(card, {
-              scale: 0.58,
+              scale: 0.82,
               borderRadius: 28,
               duration: 1,
               ease: "none",
@@ -146,6 +152,7 @@ export default function Home() {
       <Explorations />
       <Faq />
       <ReadyCta />
+      <Contact />
       <Footer />
       <WhatsAppButton />
     </main>

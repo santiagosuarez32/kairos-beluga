@@ -33,7 +33,7 @@ export function About() {
           <span className="block">en marcas que crecen.</span>
         </h2>
       </div>
-      <div className="mx-auto mt-16 grid max-w-[1300px] gap-6 md:mt-20 md:grid-cols-3 md:gap-6">
+      <div id="servicios" className="mx-auto mt-16 grid max-w-[1300px] gap-6 md:mt-20 md:grid-cols-3 md:gap-6">
         {pillars.map((pillar, index) => (
           <article key={pillar.title} className="about-card flex min-h-[24rem] flex-col overflow-hidden rounded-2xl bg-white p-8 antialiased md:h-[485px] md:min-h-0 md:p-10">
             <PillarIcon index={index} />

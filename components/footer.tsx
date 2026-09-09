@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { FiInstagram, FiMail } from "react-icons/fi";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const links = [
   ["Nosotros", "#nosotros"],
@@ -7,56 +9,39 @@ const links = [
   ["FAQ", "#faq"],
   ["Contacto", "#contacto"],
 ];
+const socials = [
+  { name: "Instagram", href: "https://www.instagram.com", Icon: FiInstagram },
+  { name: "Facebook", href: "https://www.facebook.com", Icon: FaFacebookF },
+  { name: "LinkedIn", href: "https://www.linkedin.com", Icon: FaLinkedinIn },
+  { name: "Email", href: "mailto:hola@kairosbeluga.com", Icon: FiMail },
+];
 
 export function Footer() {
   return (
-    <footer id="contacto" className="bg-[#f7f7f5] px-3 pb-3 text-white md:px-5 md:pb-5">
-      <div className="mx-auto max-w-[1400px] overflow-hidden rounded-[14px] bg-black">
-        <div className="relative aspect-[1.35] w-full md:aspect-[2.25]">
-          <Image src="/pdf-projects/biferdil-render-v2.jpg" alt="Proyecto Biferdil de Kairos Beluga" fill quality={100} sizes="(max-width: 768px) 100vw, 1400px" className="object-cover" />
-        </div>
-
-        <div className="grid gap-12 px-6 py-12 md:grid-cols-[1.4fr_0.6fr_0.6fr] md:px-12 md:py-16">
-          <div>
-            <h2 className="font-host text-[clamp(3rem,5vw,5.3rem)] font-medium leading-[0.92] tracking-[-0.07em]">
-              Espacios que<br />
-              conectan.
-            </h2>
-            <p className="mt-5 max-w-[420px] font-host text-[16px] font-light leading-[1.4] tracking-[-0.03em] text-white md:text-[18px]">
-              Kairos transforma ideas en espacios de marca que atraen, conectan y hacen avanzar.
-            </p>
-            <a href="mailto:hola@kairosbeluga.com" className="mt-7 inline-block border-b border-white/70 pb-1 font-host text-[17px] font-medium tracking-[-0.03em] transition-opacity hover:opacity-60">
-              hola@kairosbeluga.com
-            </a>
+    <>
+      <footer className="relative isolate overflow-hidden bg-[#f7f7f5] px-5 font-host text-[#191919] md:px-10">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-40 -z-10 select-none whitespace-nowrap text-center text-[clamp(5rem,17vw,22rem)] font-medium leading-none tracking-[-0.075em] text-black/[0.055] [mask-image:linear-gradient(to_bottom,black,transparent)] md:top-36">Kairos Beluga</div>
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center pb-24 pt-20 text-center md:pb-32 md:pt-24">
+          <a href="#top" aria-label="Kairos Beluga, volver al inicio" className="rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
+            <Image src="/logo.png" alt="Kairos Beluga" width={180} height={60} className="h-auto w-28 brightness-0" />
+          </a>
+          <h2 className="mt-9 text-[28px] font-medium leading-[1.15] tracking-[-0.045em] md:text-[32px]">Conectá con Kairos.<br />Seguinos en redes.</h2>
+          <p className="mt-3 text-[15px] tracking-[-0.025em] text-black/65 md:text-base">Ideas, proyectos y todo lo que estamos construyendo.</p>
+          <div className="mt-10 grid w-full max-w-[470px] grid-cols-2 gap-3">
+            {socials.map(({ name, href, Icon }) => (
+              <a key={name} href={href} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noreferrer" : undefined} className="group flex items-center justify-between gap-3 rounded-[22px] border border-black/10 bg-white/75 px-5 py-4 text-sm font-medium transition-colors hover:border-black/30 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 md:px-7 md:text-base">
+                {name}<span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#191919] text-white transition-transform group-hover:-rotate-12"><Icon size={15} aria-hidden="true" /></span>
+              </a>
+            ))}
           </div>
-
-          <nav aria-label="Navegación de pie de página" className="grid content-start gap-3 font-host text-[17px] font-medium tracking-[-0.03em]">
-            {links.map(([label, href]) => <a className="transition-opacity hover:opacity-60" href={href} key={label}>{label}</a>)}
+        </div>
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-6 border-t border-black/15 py-8 text-sm md:flex-row md:py-10">
+          <nav aria-label="Navegación de pie de página" className="flex flex-wrap justify-center gap-x-6 gap-y-3">
+            {links.map(([label, href]) => <a key={label} href={href} className="border-b border-black/50 pb-1 transition-opacity hover:opacity-50">{label}</a>)}
           </nav>
-
-          <div className="grid content-start gap-3 font-host text-[17px] font-medium tracking-[-0.03em]">
-            <a className="transition-opacity hover:opacity-60" href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram ↗</a>
-            <a className="transition-opacity hover:opacity-60" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <p className="mt-5 max-w-[200px] font-light text-[15px] leading-[1.35] text-white">Buenos Aires, Argentina</p>
-          </div>
+          <p className="text-center text-xs text-black/55 md:text-sm">© 2026 Kairos Beluga. Todos los derechos reservados.</p>
         </div>
-
-        <div className="flex flex-col gap-3 border-t border-white px-6 py-5 font-host text-[13px] font-light tracking-[-0.02em] text-white md:flex-row md:items-center md:justify-between md:px-12">
-          <span>© 2026 Kairos Beluga. Todos los derechos reservados.</span>
-          <span>Diseño que se mueve.</span>
-        </div>
-
-        <div className="relative mx-auto aspect-[2/1] w-[min(82vw,860px)] overflow-hidden">
-          <Image
-            src="/footer-logo-vector-hq.png"
-            alt="Constructora Kairos Beluga"
-            fill
-            quality={100}
-            sizes="(max-width: 768px) 82vw, 860px"
-            className="object-contain invert"
-          />
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
