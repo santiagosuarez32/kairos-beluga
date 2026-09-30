@@ -51,8 +51,8 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center justify-self-end gap-3 lg:flex">
-          <a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition-opacity duration-300 hover:opacity-45"><FiInstagram size={19} strokeWidth={2} /></a>
-          <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition-opacity duration-300 hover:opacity-45"><FaFacebookF size={16} /></a>
+          <a href="https://www.instagram.com/kairosbeluga/" target="_blank" rel="noreferrer" aria-label="Instagram" className="transition-opacity duration-300 hover:opacity-45"><FiInstagram size={19} strokeWidth={2} /></a>
+          <a href="https://www.facebook.com/profile.php?id=61589620041589" target="_blank" rel="noreferrer" aria-label="Facebook" className="transition-opacity duration-300 hover:opacity-45"><FaFacebookF size={16} /></a>
           <a href="#contacto" className="navbar-links rounded-full border border-black/35 px-4 py-1.5 text-[18px] font-normal leading-[1.35] tracking-[-0.5px] transition hover:bg-[#191919] hover:text-white">Hablemos</a>
         </div>
 
@@ -72,8 +72,8 @@ export function Navbar() {
           ))}
           <a href="#contacto" onClick={closeMenu} className="mt-3 rounded-full border border-white/60 px-7 py-3 font-host text-base font-medium text-white transition-colors hover:bg-white hover:text-black">Hablemos</a>
           <div className="mt-3 flex items-center gap-5 text-white">
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FiInstagram size={21} strokeWidth={2} /></a>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FaFacebookF size={18} /></a>
+            <a href="https://www.instagram.com/kairosbeluga/" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FiInstagram size={21} strokeWidth={2} /></a>
+            <a href="https://www.facebook.com/profile.php?id=61589620041589" target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FaFacebookF size={18} /></a>
           </div>
         </nav>
       </div>

@@ -3,11 +3,11 @@ import Image from "next/image";
 const pillars = [
   {
     title: "Visión comercial.",
-    text: "Diseñamos espacios comerciales que conectan cada marca con su público y convierten cada visita en una experiencia.",
+    text: "Diseñamos stands para ferias, góndolas y espacios comerciales que conectan cada marca con su público.",
   },
   {
     title: "Ejecución integral.",
-    text: "Integramos diseño, fabricación, obra, instalaciones y montaje en un proceso claro, ágil y listo para operar.",
+    text: "Del render a la realidad: integramos diseño, fabricación, construcción y montaje en un proceso claro y listo para operar.",
   },
   {
     title: "Ritmo y precisión.",

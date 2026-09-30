@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FiInstagram, FiMail } from "react-icons/fi";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 const links = [
   ["Nosotros", "#nosotros"],
@@ -10,10 +10,11 @@ const links = [
   ["Contacto", "#contacto"],
 ];
 const socials = [
-  { name: "Instagram", href: "https://www.instagram.com", Icon: FiInstagram },
-  { name: "Facebook", href: "https://www.facebook.com", Icon: FaFacebookF },
-  { name: "LinkedIn", href: "https://www.linkedin.com", Icon: FaLinkedinIn },
-  { name: "Email", href: "mailto:hola@kairosbeluga.com", Icon: FiMail },
+  { name: "Instagram", href: "https://www.instagram.com/kairosbeluga/", Icon: FiInstagram },
+  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61589620041589", Icon: FaFacebookF },
+  { name: "11 3640-1776", href: "https://wa.me/5491136401776", Icon: FaWhatsapp },
+  { name: "11 6675-3340", href: "https://wa.me/5491166753340", Icon: FaWhatsapp },
+  { name: "Email", href: "mailto:kairosbeluga@gmail.com", Icon: FiMail },
 ];
 
 export function Footer() {
@@ -29,7 +30,7 @@ export function Footer() {
           <p className="mt-3 text-[15px] tracking-[-0.025em] text-black/65 md:text-base">Ideas, proyectos y todo lo que estamos construyendo.</p>
           <div className="mt-10 grid w-full max-w-[470px] grid-cols-2 gap-3">
             {socials.map(({ name, href, Icon }) => (
-              <a key={name} href={href} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noreferrer" : undefined} className="group flex items-center justify-between gap-3 rounded-[22px] border border-black/10 bg-white/75 px-5 py-4 text-sm font-medium transition-colors hover:border-black/30 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 md:px-7 md:text-base">
+              <a key={name} href={href} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noreferrer" : undefined} className={`group flex items-center justify-between gap-3 rounded-[22px] border border-black/10 bg-white/75 px-5 py-4 text-sm font-medium transition-colors hover:border-black/30 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 md:px-7 md:text-base ${name === "Email" ? "col-span-2" : ""}`}>
                 {name}<span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#191919] text-white transition-transform group-hover:-rotate-12"><Icon size={15} aria-hidden="true" /></span>
               </a>
             ))}

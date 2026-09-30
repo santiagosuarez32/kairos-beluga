@@ -10,7 +10,6 @@ import { Brands } from "@/components/brands";
 import { Projects } from "@/components/projects";
 import { Explorations } from "@/components/explorations";
 import { Faq } from "@/components/faq";
-import { ReadyCta } from "@/components/ready-cta";
 import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
@@ -50,7 +49,6 @@ export default function Home() {
       gsap.to(".orb", { y: -80, x: 45, rotation: 25, ease: "none", scrollTrigger: { trigger: ".hero", scrub: 1 } });
       if (window.matchMedia("(min-width: 768px)").matches) gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
         const card = stage.querySelector<HTMLElement>(".project-zoom-card");
-        const image = stage.querySelector<HTMLElement>(".project-image");
 
         if (card) {
           gsap.timeline({
@@ -80,24 +78,13 @@ export default function Home() {
             });
         }
 
-        if (image) {
-          gsap.fromTo(image, { scale: 1.05 }, {
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: stage,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          });
-        }
+
       });
       gsap.from(".about-heading", { opacity: 0, y: 60, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".about-heading", start: "top 75%" } });
       gsap.from(".about-card", { opacity: 0, y: 54, scale: 0.975, filter: "blur(5px)", stagger: 0.12, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: ".about-card", start: "top 82%" } });
       gsap.from(".about-icon", { opacity: 0, rotation: -14, scale: 0.82, transformOrigin: "50% 50%", stagger: 0.12, duration: 0.7, ease: "back.out(1.4)", scrollTrigger: { trigger: ".about-card", start: "top 82%" } });
       gsap.to(".about-icon", { y: -10, duration: 1.55, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.08 });
-      gsap.to(".brand-track", { xPercent: -50, duration: 24, repeat: -1, ease: "none" });
+      gsap.to(".brand-track", { xPercent: -50, duration: 55, repeat: -1, ease: "none" });
       gsap.from(".project-heading-letter", {
         opacity: 0.001,
         filter: "blur(10px)",
@@ -124,14 +111,6 @@ export default function Home() {
         ease: "power3.out",
         scrollTrigger: { trigger: ".faq-section", start: "top 66%", once: true },
       });
-      gsap.from(".ready-word", {
-        opacity: 0.001, y: 40, filter: "blur(10px)", duration: 0.85, ease: "power3.out",
-        scrollTrigger: { trigger: ".ready-cta", start: "top 78%", once: true },
-      });
-      gsap.from(".ready-copy, .ready-button", {
-        opacity: 0, y: 18, stagger: 0.12, duration: 0.6, ease: "power2.out",
-        scrollTrigger: { trigger: ".ready-cta", start: "top 72%", once: true },
-      });
     }, root);
 
     return () => {
@@ -151,7 +130,6 @@ export default function Home() {
       <Projects />
       <Explorations />
       <Faq />
-      <ReadyCta />
       <Contact />
       <Footer />
       <WhatsAppButton />
