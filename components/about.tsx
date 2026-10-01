@@ -34,11 +34,11 @@ export function About() {
       </div>
       <div id="servicios" className="mx-auto mt-10 grid max-w-[1300px] gap-6 md:mt-12 md:grid-cols-3 md:gap-6">
         {pillars.map((pillar, index) => (
-          <article key={pillar.title} className="about-card flex min-h-[20rem] flex-col overflow-hidden rounded-2xl bg-white p-7 antialiased md:h-[390px] md:min-h-0 md:p-8">
+          <article key={pillar.title} className="about-card flex min-h-[20rem] flex-col overflow-hidden rounded-2xl bg-white px-5 py-7 antialiased md:h-[390px] md:min-h-0 md:p-8">
             <PillarIcon index={index} />
             <div className="mt-auto">
               <h3 className="about-card-title">{pillar.title}</h3>
-              <p className="about-card-copy max-w-[337px] md:min-h-[96px]">{pillar.text}</p>
+              <p className="about-card-copy max-w-none md:max-w-[337px] md:min-h-[96px]">{pillar.text}</p>
             </div>
           </article>
         ))}

@@ -421,7 +421,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="pointer-events-none absolute inset-x-5 bottom-6 z-[2] grid items-end gap-5 text-center md:inset-x-8 md:bottom-8 md:grid-cols-[1.5fr_0.5fr] md:text-left">
           <div>
             {hasGallery && <p className="mb-4 text-[17px] font-medium leading-[1.35] tracking-[-0.5px] text-white underline decoration-white/80 decoration-1 underline-offset-[6px] md:text-[21px]">{phase}</p>}
-            <h3 className={`max-w-[1050px] font-medium leading-[0.9] tracking-[-0.075em] ${project.name.length > 15 ? "text-[clamp(2.3rem,6vw,6.5rem)]" : "text-[clamp(3.5rem,8.2vw,9rem)]"}`}>{project.name}</h3>
+            <h3 className={`max-w-[1050px] font-medium leading-[0.9] tracking-[-0.075em] ${project.name.length > 15 ? "text-[clamp(1.75rem,4vw,4.25rem)]" : "text-[clamp(3rem,7vw,7.5rem)]"}`}>{project.name}</h3>
           </div>
           <div className="mx-auto max-w-[330px] md:mx-0 md:max-w-[390px]">
             {project.name.includes("Multimarca") && <p className="mb-2 text-xs font-medium leading-relaxed text-white/85">{project.brands}</p>}

@@ -255,6 +255,7 @@ body { margin: 0; background: #f7f7f5; font-family: "Kairos Arial", Arial, sans-
   }
 
   .about-card-copy {
+    text-wrap: wrap;
     font-size: 16px;
   }
 }
