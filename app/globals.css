@@ -216,11 +216,11 @@ body { margin: 0; background: #f7f7f5; font-family: "Kairos Arial", Arial, sans-
   margin: 0;
   color: #141411;
   font-family: "Host Grotesk", Arial, sans-serif;
-  font-size: 44px;
+  font-size: 38px;
   font-style: normal;
   font-weight: 500;
   line-height: 1em;
-  letter-spacing: -2.2px;
+  letter-spacing: -1.9px;
   text-align: start;
   text-decoration: none;
   text-transform: none;
@@ -231,7 +231,7 @@ body { margin: 0; background: #f7f7f5; font-family: "Kairos Arial", Arial, sans-
 }
 
 .about-card-copy {
-  margin: 28px 0 0;
+  margin: 20px 0 0;
   color: #141411;
   font-family: "Host Grotesk", Arial, sans-serif;
   font-size: 18px;
@@ -250,7 +250,7 @@ body { margin: 0; background: #f7f7f5; font-family: "Kairos Arial", Arial, sans-
 
 @media (max-width: 767px) {
   .about-card-title {
-    font-size: 34px;
+    font-size: 30px;
     letter-spacing: -1.7px;
   }
 

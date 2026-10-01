@@ -30,19 +30,19 @@ const explorations = [
 
 export function Explorations() {
   return (
-    <section className="explorations overflow-hidden bg-[#f7f7f5] py-24 text-[#141411] md:py-32">
+    <section className="explorations overflow-hidden bg-[#f7f7f5] py-12 text-[#141411] md:py-16">
       <div className="mx-auto w-[calc(100%-40px)] max-w-[1280px]">
         <p className="mb-8 font-host text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:mb-12 md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> NUESTRA VISIÓN <span className="text-[#ef3b32]">&#125;</span>
         </p>
 
         <div className="grid gap-8 md:grid-cols-[0.94fr_1.06fr] md:items-end md:gap-20">
-          <h2 className="font-host text-[clamp(3.75rem,5.1vw,6rem)] font-medium leading-[1.02] tracking-[-0.07em]">
+          <h2 className="font-host text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
             Espacios que<br />
             conectan.
           </h2>
           <p className="max-w-[720px] pb-1 font-host text-xl font-medium leading-[1.3] tracking-[-0.04em] text-[#4b4b49] md:text-[clamp(1.25rem,1.65vw,1.7rem)]">
-            Creamos espacios que transforman marcas en experiencias memorables. Descubrí proyectos diseñados para atraer, conectar y avanzar con precisión.
+            Construimos espacios que transforman marcas en experiencias memorables.
           </p>
         </div>
       </div>

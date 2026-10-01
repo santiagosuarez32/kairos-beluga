@@ -74,7 +74,7 @@ export function Contact() {
               </a>
               <a href="https://www.facebook.com/profile.php?id=61589620041589" target="_blank" rel="noreferrer" className="group flex items-center gap-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
                 <span className="grid size-14 shrink-0 place-items-center rounded-2xl border border-white/70 bg-white/60 backdrop-blur-md transition group-hover:bg-white/85"><FaFacebookF size={20} aria-hidden="true" /></span>
-                <span className="group-hover:underline"><span className="font-medium">Facebook:</span> Kairos Beluga</span>
+                <span className="group-hover:underline"><span className="font-medium">Facebook:</span> Kairos Beluga Constructora</span>
               </a>
             </nav>
           </div>

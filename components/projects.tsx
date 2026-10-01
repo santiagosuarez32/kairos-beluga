@@ -121,7 +121,7 @@ const projects = [
       "Construcción"
     ],
     "position": "center",
-    "description": "Diseño y construcción de stand modular de tipo isla, con cenefa en altura, mostradores de exhibición vidriados y mobiliario a medida para marcas de lujo."
+    "description": "Construcción de stand modular de tipo isla, con cenefa en altura, mostradores de exhibición vidriados y mobiliario a medida para marcas de lujo."
   },
   {
     "number": "05",
@@ -175,8 +175,8 @@ const projects = [
   },
   {
     "number": "07",
-    "name": "Pantene - Herbal",
-    "brands": "Pantene - Herbal",
+    "name": "Pantene - Herbal Essences",
+    "brands": "Pantene - Herbal Essences",
     "category": "Stand",
     "location": "Expo Pigmento Fest",
     "year": "2026",
@@ -196,7 +196,7 @@ const projects = [
       "Construcción"
     ],
     "position": "center",
-    "description": "Construcción de stand doble integrando ambas marcas, con carpintería premium, iluminación LED, estanterías iluminada, área de interacción/photo opportunity y áreas de venta."
+    "description": "Construcción de stand doble integrando ambas marcas, con carpintería premium, iluminación LED, estanterías iluminadas, área de interacción/photo opportunity y áreas de venta."
   },
   {
     "number": "08",
@@ -246,7 +246,7 @@ const projects = [
       "Render"
     ],
     "position": "center",
-    "description": "Góndola comercial de diseño contemporáneo, con estructura satinada simil laqueada, mobiliario personalizado, vitrinas iluminadas y detalles gráficos para exhibición y atención al público."
+    "description": "Góndola comercial con estructura satinada simil laqueada, mobiliario personalizado, vitrinas iluminadas y detalles gráficos para exhibición y atención al público."
   },
   {
     "number": "10",
@@ -329,7 +329,7 @@ function PhotoViewer({ project, activeImage, onChange, onClose }: { project: Pro
             if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) onChange(dx < 0 ? 1 : -1);
           }}>
           <div className={`relative ${zoomed ? "h-[200%] w-[200%]" : "h-full w-full"}`}>
-            <Image src={project.images[activeImage]} alt={`${project.name}: ${project.phases[activeImage]}`} fill unoptimized sizes="100vw" className="object-contain" />
+            <Image src={project.images[activeImage]} alt={`${project.name}: ${project.phases[activeImage]}`} fill unoptimized quality={100} sizes="100vw" className="object-contain" />
           </div>
         </div>
         <nav aria-label="Navegación de fotos" className="flex shrink-0 items-center justify-between gap-4 pt-3">
@@ -382,7 +382,7 @@ function ProjectCard({ project }: { project: Project }) {
   };
 
   return (
-    <article className="project-stage relative h-[68svh] min-h-[480px] overflow-visible pt-8 md:h-[100svh] md:min-h-[620px] md:pt-36">
+    <article className="project-stage relative h-[calc(68svh-16px)] min-h-[464px] overflow-visible pt-4 md:h-[calc(100svh-120px)] md:min-h-[500px] md:pt-6">
       <div ref={cardRef} className="project-zoom-card relative h-full w-full overflow-hidden rounded-[28px] bg-[#161616] text-white will-change-transform">
         <button ref={openButtonRef} type="button" onClick={() => setViewerOpen(true)} aria-label={`Abrir foto de ${project.name} en pantalla completa`} className="absolute inset-0 z-[1] cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white" />
         <button type="button" onClick={() => setViewerOpen(true)} aria-label={`Ampliar foto de ${project.name}`} className="absolute left-5 top-5 z-10 flex min-h-11 items-center gap-2 rounded-full border border-white/25 bg-black/30 px-3 text-xs text-white backdrop-blur-md transition hover:bg-black/60 md:left-8 md:top-8 md:px-4 md:text-sm"><FiMaximize2 size={17} /><span>Ver foto</span></button>
@@ -402,7 +402,7 @@ function ProjectCard({ project }: { project: Project }) {
             style={{ objectPosition: project.position }}
           />
         ))}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-black/35" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-black/10" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/20" />
 
         <div className="pointer-events-none absolute inset-x-5 top-16 z-[2] text-center text-[12px] font-normal leading-[1.35] tracking-[-0.5px] md:inset-x-auto md:right-8 md:top-8 md:text-right md:text-[18px]">
@@ -439,12 +439,12 @@ function ProjectCard({ project }: { project: Project }) {
 export function Projects() {
   return (
     <section id="proyectos" className="projects-section font-host bg-[#f7f7f5] pb-10 text-[#141411] md:pb-20">
-      <header className="mx-auto grid w-[calc(100%-32px)] max-w-[1600px] gap-10 py-24 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:py-32">
+      <header className="mx-auto grid w-[calc(100%-32px)] max-w-[1600px] gap-6 pb-4 pt-12 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:pb-5 md:pt-16">
         <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] text-[#191919] md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> PROYECTOS <span className="text-[#ef3b32]">&#125;</span>
         </p>
-        <h2 className="max-w-[920px] text-[clamp(2rem,10vw,2.75rem)] font-medium leading-[0.92] tracking-[-0.065em] md:text-[clamp(3.25rem,6vw,7rem)]">
-          <AnimatedHeading>Espacios que hacen avanzar marcas.</AnimatedHeading>
+        <h2 className="max-w-[920px] text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">
+          <AnimatedHeading>Espacios que hacen destacar.</AnimatedHeading>
         </h2>
       </header>
 

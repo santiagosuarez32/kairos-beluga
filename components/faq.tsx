@@ -5,12 +5,12 @@ import { FiPlus } from "react-icons/fi";
 
 const questions = [
   {
-    question: "¿Qué tipo de espacios diseñan?",
-    answer: "Diseñamos stands, espacios comerciales, activaciones y exhibiciones pensadas para que cada marca se vea, se recorra y conecte.",
+    question: "¿Qué tipo de espacios construyen?",
+    answer: "Construimos espacios comerciales pensados para potenciar la identidad de cada marca.",
   },
   {
     question: "¿Acompañan todo el proceso?",
-    answer: "Sí. Llevamos cada proyecto desde la idea y el diseño hasta la producción, el montaje y la entrega final.",
+    answer: "Sí. Llevamos cada proyecto desde la idea y diseño hasta la producción, el montaje y la entrega final.",
   },
   {
     question: "¿Pueden trabajar con nuestra identidad de marca?",
@@ -18,7 +18,7 @@ const questions = [
   },
   {
     question: "¿Con cuánta anticipación conviene empezar?",
-    answer: "Cuanto antes, mejor. Así podemos definir la estrategia, producir con precisión y llegar a la feria sin improvisaciones.",
+    answer: "Cuanto antes, mejor. Así podemos planificar cada etapa, trabajar con precisión y llegar al resultado final a tiempo.",
   },
   {
     question: "¿Trabajan fuera de Buenos Aires?",
@@ -30,7 +30,7 @@ export function Faq() {
   const [openQuestion, setOpenQuestion] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="faq-section bg-[#f7f7f5] py-24 text-[#141411] md:py-32">
+    <section id="faq" className="faq-section bg-[#f7f7f5] py-12 text-[#141411] md:py-16">
       <div className="mx-auto w-[calc(100%-40px)] max-w-[1280px]">
         <p className="mb-8 font-host text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:mb-12 md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> FAQ <span className="text-[#ef3b32]">&#125;</span>
@@ -38,7 +38,7 @@ export function Faq() {
 
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <div>
-            <h2 className="faq-heading max-w-[560px] font-host text-[clamp(3.5rem,5.2vw,6rem)] font-medium leading-[0.93] tracking-[-0.07em]">
+            <h2 className="faq-heading max-w-[560px] font-host text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
               ¿Tenés más<br />
               preguntas?
             </h2>
