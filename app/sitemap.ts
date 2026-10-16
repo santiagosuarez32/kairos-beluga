@@ -1,8 +1,14 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/seo";
 import { services } from "@/lib/services";
+import { projects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!siteUrl) return [];
-  return [{ url: siteUrl, images: ["/projects-hq/barbieri/01-hq.jpg", "/projects-hq/vth/01-hq.jpg", "/projects-hq/fera/01-hq.jpg"].map((path) => `${siteUrl}${path}`) }, ...services.map(({ slug }) => ({ url: `${siteUrl}/servicios/${slug}` }))];
+  return [
+    { url: siteUrl, images: [`${siteUrl}/hero-image.png`, ...projects.map((project) => `${siteUrl}${project.image}`)] },
+    ...services.map(({ slug, category }) => ({
+      url: `${siteUrl}/servicios/${slug}`,
+      images: projects.filter((project) => project.category === category).map((project) => `${siteUrl}${project.image}`),
+    })),
+  ];
 }

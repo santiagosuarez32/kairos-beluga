@@ -8,6 +8,14 @@ import { ProjectCard } from "@/components/projects";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { services } from "@/lib/services";
 import { projects } from "@/lib/projects";
+import { siteName, siteUrl, socialImage } from "@/lib/seo";
+
+const serviceDescriptions: Record<string, string> = {
+  stands: "Diseño, construcción y montaje de stands para ferias y exposiciones en Buenos Aires y toda Argentina. Conocé nuestros proyectos y pedí tu cotización.",
+  gondolas: "Diseño y fabricación de góndolas comerciales a medida para shoppings y puntos de venta. Construcción y montaje en todo el país. Cotizá tu proyecto.",
+  "locales-comerciales": "Construcción y montaje de locales comerciales a medida, con mobiliario y terminaciones para tu marca. Trabajamos en toda Argentina. Pedí tu cotización.",
+  "locales-gastronomicos": "Construcción y montaje de locales gastronómicos a medida. Transformamos tu diseño en un espacio listo para operar en Argentina. Cotizá tu proyecto.",
+};
 
 export function generateStaticParams() {
   return services.map(({ slug }) => ({ slug }));
@@ -16,7 +24,17 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
-  return { title: `${service?.label ?? "Servicios"} | Kairos Beluga`, description: `Construimos tu ${service?.singular ?? "proyecto"}. Conocé nuestros trabajos y contactanos para cotizar.` };
+  if (!service) notFound();
+  const title = `${service.label} a medida`;
+  const description = serviceDescriptions[slug];
+  const url = `${siteUrl}/servicios/${slug}`;
+  return {
+    title, description,
+    keywords: [service.label, `${service.label} a medida`, `${service.label} Buenos Aires`, `${service.label} Argentina`, siteName],
+    alternates: { canonical: url },
+    openGraph: { type: "website", locale: "es_AR", siteName, title: `${title} | ${siteName}`, description, url, images: [socialImage] },
+    twitter: { card: "summary_large_image", title: `${title} | ${siteName}`, description, images: [socialImage] },
+  };
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -24,8 +42,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
   const selected = projects.filter((project) => project.category === service.category);
+  const pageUrl = `${siteUrl}/servicios/${slug}`;
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Service", "@id": `${pageUrl}#servicio`, name: `${service.label} a medida`, description: serviceDescriptions[slug], url: pageUrl, serviceType: service.label, areaServed: { "@type": "Country", name: "Argentina" }, provider: { "@id": `${siteUrl}/#empresa` } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: siteUrl },
+        { "@type": "ListItem", position: 2, name: service.label, item: pageUrl },
+      ] },
+    ],
+  };
 
   return <main id="top" className="min-h-screen bg-[#f7f7f5] font-host text-[#191919]">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c") }} />
     <Navbar />
     <section id="contacto" className="mx-auto max-w-[1400px] space-y-8 px-5 pb-12 pt-36 md:px-10 md:pb-20 md:pt-44">
       <nav aria-label="Ruta de navegación" className="text-sm text-black/55"><a href="/" className="hover:underline">Inicio</a> / <a href="/#servicios" className="hover:underline">Servicios</a> / <strong className="text-black">{service.label}</strong></nav>

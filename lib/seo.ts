@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 
 const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined);
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://kairos-beluga.vercel.app");
 
-export const siteUrl = configuredUrl ? new URL(configuredUrl).origin : undefined;
+export const siteUrl = new URL(configuredUrl).origin;
 export const siteName = "Kairos Beluga";
+export const isIndexable = process.env.VERCEL_ENV !== "preview" && process.env.NODE_ENV === "production";
+export const socialImage = { url: "/opengraph-image", width: 1200, height: 630, alt: "Stand construido por Kairos Beluga: foto de presentación del sitio" };
 export const siteTitle = "Kairos Beluga | Diseño y construcción de stands";
-export const siteDescription = "Diseño, construcción y montaje de stands para ferias, góndolas y espacios comerciales en Buenos Aires. Kairos Beluga: del render a la realidad.";
+export const siteDescription = "Diseño, construcción y montaje de stands, góndolas y locales comerciales y gastronómicos. Desde Buenos Aires a todo el país. Cotizá con Kairos Beluga.";
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(siteUrl || "http://localhost:3000"),
   title: { default: siteTitle, template: "%s | Kairos Beluga" },
   description: siteDescription,
   applicationName: siteName,
-  keywords: ["Kairos Beluga", "diseño de stands", "construcción de stands", "montaje de stands", "stands para ferias", "stands para exposiciones", "stands Buenos Aires", "arquitectura comercial", "espacios comerciales", "góndolas comerciales", "exhibidores a medida", "procesos constructivos", "stands Canning"],
+  keywords: ["Kairos Beluga", "diseño de stands", "construcción de stands", "montaje de stands", "stands para ferias", "stands para exposiciones", "stands Buenos Aires", "arquitectura comercial", "construcción de locales comerciales", "locales gastronómicos", "góndolas comerciales", "exhibidores a medida", "stands Argentina", "stands Canning"],
   authors: [{ name: siteName }],
   creator: siteName,
   publisher: siteName,
@@ -23,15 +25,16 @@ export const siteMetadata: Metadata = {
   openGraph: {
     type: "website", locale: "es_AR", siteName,
     title: siteTitle, description: siteDescription,
+    images: [socialImage],
     ...(siteUrl ? { url: siteUrl } : {}),
   },
   twitter: {
     card: "summary_large_image", title: siteTitle, description: siteDescription,
-    images: [{ url: "/opengraph-image", alt: "Kairos Beluga: diseño y construcción de stands en Buenos Aires" }],
+    images: [socialImage],
   },
   robots: {
-    index: Boolean(siteUrl), follow: true,
-    googleBot: { index: Boolean(siteUrl), follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+    index: isIndexable, follow: true,
+    googleBot: { index: isIndexable, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
 };
