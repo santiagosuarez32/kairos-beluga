@@ -35,6 +35,24 @@ export function Navbar() {
   const pathname = usePathname();
   const homeLink = (href: string) => pathname === "/" ? href : `/${href}`;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileView, setMobileView] = useState<"main" | "services">("main");
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        setMobileView("main");
+      }
+    };
+    window.addEventListener("keydown", onEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onEscape);
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const closeOnDesktop = () => {
@@ -45,7 +63,10 @@ export function Navbar() {
     return () => window.removeEventListener("resize", closeOnDesktop);
   }, []);
 
-  const closeMenu = () => setIsMobileMenuOpen(false);
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    setMobileView("main");
+  };
 
   return (
     <>
@@ -69,16 +90,21 @@ export function Navbar() {
           <a href={homeLink("#contacto")} className="navbar-links rounded-full border border-black/35 px-4 py-1.5 text-[18px] font-normal leading-[1.35] tracking-[-0.5px] transition hover:bg-[#191919] hover:text-white">Hablemos</a>
         </div>
 
-        <button type="button" onClick={() => setIsMobileMenuOpen((open) => !open)} aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isMobileMenuOpen} className="relative z-50 ml-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden">
+        <button type="button" onClick={() => { setMobileView("main"); setIsMobileMenuOpen((open) => !open); }} aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation" className="relative z-50 ml-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden">
           <span className={`h-0.5 w-6 rounded-full bg-[#191919] transition-all duration-300 ${isMobileMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
           <span className={`h-0.5 w-6 rounded-full bg-[#191919] transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
           <span className={`h-0.5 w-6 rounded-full bg-[#191919] transition-all duration-300 ${isMobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </nav>
 
-      <div className={`fixed inset-0 z-40 flex items-center justify-center overflow-y-auto bg-black/95 px-6 backdrop-blur-lg transition-all duration-500 lg:hidden ${isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={!isMobileMenuOpen}>
-        <nav aria-label="Navegación móvil" className="flex translate-y-8 flex-col items-center gap-4 text-center">
-          {links.map((link) => link.label === "Servicios" ? <ServiceSelector key={link.label} mobile onChoose={closeMenu} /> : (
+      <div id="mobile-navigation" data-lenis-prevent inert={!isMobileMenuOpen} className={`fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-black/95 px-7 pb-[max(40px,env(safe-area-inset-bottom))] pt-36 font-host text-white backdrop-blur-lg transition-all duration-300 lg:hidden ${isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`} aria-hidden={!isMobileMenuOpen}>
+        <nav aria-label={mobileView === "services" ? "Servicios" : "Navegación móvil"} className="mx-auto flex min-h-full max-w-md flex-col items-center justify-center gap-4 text-center">
+          {mobileView === "services" ? <>
+            <button type="button" onClick={() => setMobileView("main")} className="mb-2 min-h-11 px-4 text-base text-white/70 hover:text-white">← Volver al menú</button>
+            <h2 className="mb-3 text-3xl font-medium tracking-[-0.05em]">Servicios</h2>
+            {services.map((service) => <a key={service.slug} href={`/servicios/${service.slug}`} onClick={closeMenu} aria-current={pathname === `/servicios/${service.slug}` ? "page" : undefined} className="flex min-h-12 w-full items-center justify-center rounded-2xl px-4 py-3 text-2xl font-medium leading-tight tracking-[-0.05em] hover:bg-white/10 aria-[current=page]:text-[#ef3b32]">{service.label}</a>)}
+          </> : <>
+          {links.map((link) => link.label === "Servicios" ? <button key={link.label} type="button" onClick={() => setMobileView("services")} className="min-h-11 font-host text-3xl font-medium tracking-[-0.05em] text-white hover:text-white/60">Servicios <span aria-hidden="true">↗</span></button> : (
             <a key={link.label} href={homeLink(link.href)} onClick={closeMenu} className="font-host text-3xl font-medium tracking-[-0.05em] text-white decoration-1 underline-offset-8 transition-all duration-300 hover:translate-x-1 hover:text-white/60 hover:underline">
               {link.label}
             </a>
@@ -88,6 +114,7 @@ export function Navbar() {
             <a href="https://www.instagram.com/kairosbeluga/" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FiInstagram size={21} strokeWidth={2} /></a>
             <a href="https://www.facebook.com/profile.php?id=61589620041589" target="_blank" rel="noreferrer" aria-label="Facebook" className="grid size-11 place-items-center rounded-full border border-white/45 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:border-white hover:bg-white hover:text-black"><FaFacebookF size={18} /></a>
           </div>
+          </>}
         </nav>
       </div>
     </>

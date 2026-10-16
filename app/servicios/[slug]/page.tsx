@@ -41,10 +41,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <section id="proyectos" className="projects-section bg-[#f7f7f5] pb-10 text-[#191919] md:pb-20">
       <header className="mx-auto grid max-w-[1400px] gap-6 px-5 pb-10 pt-12 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:pt-16">
         <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Proyectos <span className="text-[#ef3b32]">&#125;</span></p>
-        <div className="space-y-4"><h2 className="text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">Nuestros proyectos.</h2><p className="text-lg leading-relaxed tracking-[-0.02em] text-[#4b4b49]">{service.label} que construimos en trabajos anteriores.</p><p className="text-sm text-black/55">{String(selected.length).padStart(2, "0")} {selected.length === 1 ? "proyecto" : "proyectos"}</p></div>
+        <div className="space-y-4"><h2 className="text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">Nuestros proyectos.</h2></div>
       </header>
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        {selected.map((project, index) => <ProjectCard key={project.number} project={project} layout="detail" index={index} />)}
+        {selected.map((project) => <ProjectCard key={project.number} project={project} layout="detail" />)}
         {selected.length === 0 && <div className="mx-auto my-8 max-w-[1400px] rounded-2xl bg-white px-6 py-12 md:p-12"><p className="text-xl font-medium tracking-[-0.04em]">Próximamente compartiremos nuestros proyectos de {service.label.toLowerCase()}.</p><p className="mt-3 text-[#4b4b49]">Mientras tanto, contactanos para conversar sobre tu idea.</p></div>}
       </div>
     </section>

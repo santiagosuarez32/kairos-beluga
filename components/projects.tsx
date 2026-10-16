@@ -25,7 +25,7 @@ function AnimatedHeading({ children }: { children: string }) {
 
 
 import { projects, type Project } from "@/lib/projects";
-import { services } from "@/lib/services";
+
 
 function PhotoViewer({ project, activeImage, onChange, onClose }: { project: Project; activeImage: number; onChange: (direction: number) => void; onClose: () => void }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -92,7 +92,7 @@ function PhotoViewer({ project, activeImage, onChange, onClose }: { project: Pro
   );
 }
 
-export function ProjectCard({ project, layout = "card", index = 0 }: { project: Project; layout?: "card" | "detail"; index?: number }) {
+export function ProjectCard({ project, layout = "card" }: { project: Project; layout?: "card" | "detail" }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const [viewerOpen, setViewerOpen] = useState(false);
@@ -143,8 +143,8 @@ export function ProjectCard({ project, layout = "card", index = 0 }: { project: 
         </div>
       </div>
       <div className="min-w-0 space-y-5">
-        <p className="text-lg font-medium tracking-[-0.03em] text-[#ef3b32]">{String(index + 1).padStart(2, "0")}</p>
-        <div className="flex flex-wrap gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="rounded-full border border-black/20 px-3 py-1.5 text-sm tracking-[-0.02em] text-[#4b4b49]">{value}</span>)}</div>
+        
+        <div className="flex flex-wrap gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="whitespace-pre-line rounded-full border border-black/20 px-3 py-1.5 text-sm tracking-[-0.02em] text-[#4b4b49]">{value}</span>)}</div>
         <h3 className="text-[clamp(2rem,3.4vw,3.5rem)] font-medium leading-[1.02] tracking-[-0.05em]">{project.name}</h3>
         {project.name.includes("Multimarca") && <p className="text-sm leading-relaxed text-black/55">{project.brands}</p>}
         <p className="text-base leading-relaxed tracking-[-0.02em] text-[#4b4b49] md:text-lg">{project.description}</p>
@@ -179,7 +179,7 @@ export function ProjectCard({ project, layout = "card", index = 0 }: { project: 
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/20" />
 
         <div className="pointer-events-none absolute inset-x-5 top-16 z-[2] text-center text-[12px] font-normal leading-[1.35] tracking-[-0.5px] md:inset-x-auto md:right-8 md:top-8 md:text-right md:text-[18px]">
-          <p>{project.location}</p>
+          <p className="whitespace-pre-line">{project.location}</p>
           {project.year && <p>{project.year}</p>}
           <p>{project.surface}</p>
         </div>
@@ -210,25 +210,21 @@ export function ProjectCard({ project, layout = "card", index = 0 }: { project: 
 }
 
 export function Projects() {
-  const [category, setCategory] = useState("");
-  const visibleProjects = projects.filter((project) => !category || project.category === category);
+
+
   return (
     <section id="proyectos" className="projects-section font-host bg-[#f7f7f5] pb-10 text-[#141411] md:pb-20">
-      <header className="mx-auto grid w-[calc(100%-32px)] max-w-[1600px] gap-6 pb-4 pt-12 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:pb-5 md:pt-16">
+      <header className="section-heading-layout pb-4 pt-12 md:pb-5 md:pt-16">
         <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] text-[#191919] md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> PROYECTOS <span className="text-[#ef3b32]">&#125;</span>
         </p>
-        <h2 className="max-w-[920px] text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">
+        <h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">
           <AnimatedHeading>Espacios que hacen destacar.</AnimatedHeading>
         </h2>
       </header>
 
-      <div className="mx-auto flex max-w-[1500px] flex-wrap gap-2 px-5 py-6" aria-label="Filtrar proyectos por servicio">
-        {[{ label: "Todos", category: "" }, ...services].map((service) => <button key={service.category} type="button" onClick={() => setCategory(service.category)} aria-pressed={category === service.category} className={`rounded-full border border-black/25 px-4 py-2 text-sm transition ${category === service.category ? "bg-[#191919] text-white" : "hover:bg-black/10"}`}>{service.label}</button>)}
-      </div>
-      {visibleProjects.length === 0 && <p role="status" className="px-6 py-12 text-center">Próximamente compartiremos proyectos de esta categoría. <a href="#contacto" className="underline">Consultanos por tu proyecto.</a></p>}
       <div className="projects-list mx-auto w-[calc(100%-24px)] max-w-[1600px] md:w-[calc(100%-40px)]">
-        {visibleProjects.map((project) => <ProjectCard key={project.number} project={project} />)}
+        {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
       </div>
     </section>
   );

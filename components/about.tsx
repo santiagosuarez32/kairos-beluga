@@ -22,16 +22,16 @@ function PillarIcon({ index }: { index: number }) {
 
 export function About() {
   return (
-    <section id="nosotros" className="font-host bg-[#f7f7f5] px-5 py-12 text-[#191919] md:px-10 md:py-16">
-      <div className="mx-auto max-w-[1400px]">
-      <div className="grid gap-12 md:grid-cols-[0.72fr_1.28fr] md:gap-12">
+    <section id="nosotros" className="font-host bg-[#f7f7f5] py-12 text-[#191919] md:py-16">
+      <div className="section-heading-layout">
         <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="font-bold text-[#ef3b32]">&#123;</span> Nosotros <span className="font-bold text-[#ef3b32]">&#125;</span></p>
-        <h2 className="about-heading max-w-[737px] text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em] md:w-fit md:justify-self-end">
+        <h2 className="about-heading text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
           <span className="block">Kairos es más que construir</span>
           <span className="block">espacios: transformamos ideas</span>
           <span className="block">en marcas que crecen.</span>
         </h2>
       </div>
+      <div className="px-6 md:px-10">
       <div id="servicios" className="mx-auto mt-10 grid max-w-[1300px] gap-6 md:mt-12 md:grid-cols-3 md:gap-6">
         {pillars.map((pillar, index) => (
           <article key={pillar.title} className="about-card flex min-h-[20rem] flex-col overflow-hidden rounded-2xl bg-white px-5 py-7 antialiased md:h-[390px] md:min-h-0 md:p-8">

@@ -97,7 +97,7 @@ export const projects = [
       "Construcción"
     ],
     "position": "center",
-    "description": "Construcción de stand modular de tipo isla, con cenefa en altura, mostradores de exhibición vidriados y mobiliario a medida para marcas de lujo."
+    "description": "Construcción de stand modular de tipo isla, con cenefa en altura, mostradores de exhibición vidriados y mobiliario a medida."
   },
   {
     "number": "05",
@@ -122,7 +122,7 @@ export const projects = [
       "Construcción"
     ],
     "position": "center",
-    "description": "Stand de exposición con estructura modular, revestimientos gráficos, mostradores personalizados, iluminación decorativa y elementos vegetales integrados para atención y exhibición de marca."
+    "description": "Stand de exposición con estructura modular, revestimientos gráficos, mostradores personalizados, iluminación decorativa y paisajismo, integrados para atención y exhibición de marca."
   },
   {
     "number": "06",
@@ -204,7 +204,7 @@ export const projects = [
     "name": "Biferdil",
     "brands": "Biferdil",
     "category": "Góndola",
-    "location": "Shopping Bendu",
+    "location": "Shopping Bendu\nMar del Plata",
     "year": "",
     "surface": "6 m²",
     "contractor": "Gauss Rubrican SA",
@@ -247,7 +247,7 @@ export const projects = [
       "Render"
     ],
     "position": "center",
-    "description": "Stand con temática “bosque de fantasía”, con arcos de carpintería, vegetación colgante, iluminación LED cálida y estanterías iluminadas para una mejor exhibición de los libros y su venta."
+    "description": "Stand con temática “bosque de fantasía”, con arcos de carpintería, vegetación colgante, iluminación LED cálida y estanterías iluminadas."
   }
 ];
 

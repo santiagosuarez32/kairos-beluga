@@ -47,7 +47,7 @@ export default function Home() {
       gsap.from(".hero-letter", { opacity: 0.001, filter: "blur(10px)", y: 10, duration: 0.58, stagger: 0.026, ease: "power2.out", delay: 0.28 });
       gsap.from(".hero-meta", { opacity: 0, filter: "blur(8px)", y: 10, duration: 0.65, ease: "power2.out", delay: 0.45 });
       gsap.to(".orb", { y: -80, x: 45, rotation: 25, ease: "none", scrollTrigger: { trigger: ".hero", scrub: 1 } });
-      if (window.matchMedia("(min-width: 768px)").matches) gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
+      gsap.utils.toArray<HTMLElement>(".project-stage").forEach((stage) => {
         const card = stage.querySelector<HTMLElement>(".project-zoom-card");
 
         if (card) {
