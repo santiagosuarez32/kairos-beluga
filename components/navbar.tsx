@@ -102,7 +102,7 @@ export function Navbar() {
           {mobileView === "services" ? <>
             <button type="button" onClick={() => setMobileView("main")} className="mb-2 min-h-11 px-4 text-base text-white/70 hover:text-white">← Volver al menú</button>
             <h2 className="mb-3 text-3xl font-medium tracking-[-0.05em]">Servicios</h2>
-            {services.map((service) => <a key={service.slug} href={`/servicios/${service.slug}`} onClick={closeMenu} aria-current={pathname === `/servicios/${service.slug}` ? "page" : undefined} className="flex min-h-12 w-full items-center justify-center rounded-2xl px-4 py-3 text-2xl font-medium leading-tight tracking-[-0.05em] hover:bg-white/10 aria-[current=page]:text-[#ef3b32]">{service.label}</a>)}
+            {services.map((service) => <a key={service.slug} href={`/servicios/${service.slug}`} onClick={closeMenu} aria-current={pathname === `/servicios/${service.slug}` ? "page" : undefined} className="flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xl font-normal leading-tight tracking-[-0.03em] hover:bg-white/10 aria-[current=page]:text-[#ef3b32]"><span aria-hidden="true">-</span>{service.label}</a>)}
           </> : <>
           {links.map((link) => link.label === "Servicios" ? <button key={link.label} type="button" onClick={() => setMobileView("services")} className="min-h-11 font-host text-3xl font-medium tracking-[-0.05em] text-white hover:text-white/60">Servicios <span aria-hidden="true">↗</span></button> : (
             <a key={link.label} href={homeLink(link.href)} onClick={closeMenu} className="font-host text-3xl font-medium tracking-[-0.05em] text-white decoration-1 underline-offset-8 transition-all duration-300 hover:translate-x-1 hover:text-white/60 hover:underline">
