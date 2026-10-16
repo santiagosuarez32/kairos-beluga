@@ -144,7 +144,7 @@ export function ProjectCard({ project, layout = "card" }: { project: Project; la
       </div>
       <div className="min-w-0 space-y-5">
         
-        <div className="flex flex-wrap gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="whitespace-pre-line rounded-full border border-black/20 px-3 py-1.5 text-sm tracking-[-0.02em] text-[#4b4b49]">{value}</span>)}</div>
+        <div className="flex flex-wrap items-stretch gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="inline-flex min-h-10 items-center justify-center whitespace-nowrap rounded-2xl border border-black/20 px-3.5 py-2 text-center text-sm leading-[1.35] tracking-[-0.02em] text-[#4b4b49]">{value.replace(/\n/g, " · ")}</span>)}</div>
         <h3 className="text-[clamp(2rem,3.4vw,3.5rem)] font-medium leading-[1.02] tracking-[-0.05em]">{project.name}</h3>
         {project.name.includes("Multimarca") && <p className="text-sm leading-relaxed text-black/55">{project.brands}</p>}
         <p className="text-base leading-relaxed tracking-[-0.02em] text-[#4b4b49] md:text-lg">{project.description}</p>

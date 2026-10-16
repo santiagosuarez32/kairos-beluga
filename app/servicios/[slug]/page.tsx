@@ -57,7 +57,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   return <main id="top" className="min-h-screen bg-[#f7f7f5] font-host text-[#191919]">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c") }} />
     <Navbar />
-    <section id="contacto" className="mx-auto max-w-[1400px] space-y-8 px-5 pb-12 pt-36 md:px-10 md:pb-20 md:pt-44">
+    <section id="contacto" className="section-content-layout space-y-8 pb-12 pt-36 md:pb-20 md:pt-44">
       <nav aria-label="Ruta de navegación" className="text-sm text-black/55"><a href="/" className="hover:underline">Inicio</a> / <a href="/#servicios" className="hover:underline">Servicios</a> / <strong className="text-black">{service.label}</strong></nav>
       <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Servicios · {service.label} <span className="text-[#ef3b32]">&#125;</span></p>
       <h1 className="max-w-[980px] text-[clamp(2.5rem,5.8vw,6rem)] font-medium leading-[0.95] tracking-[-0.065em]">Hacemos tu idea realidad, construimos tu <span className="text-[#ef3b32]">{service.singular}</span>.</h1>
@@ -69,11 +69,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </div>
     </section>
     <section id="proyectos" className="projects-section bg-[#f7f7f5] pb-10 text-[#191919] md:pb-20">
-      <header className="mx-auto grid max-w-[1400px] gap-6 px-5 pb-10 pt-12 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:pt-16">
+      <header className="section-heading-layout pb-4 pt-12 md:pb-5 md:pt-16">
         <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Proyectos <span className="text-[#ef3b32]">&#125;</span></p>
-        <div className="space-y-4"><h2 className="text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">Nuestros proyectos.</h2></div>
+        <div className="space-y-4"><h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">Nuestros proyectos.</h2></div>
       </header>
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+      <div className="section-content-layout">
         {selected.map((project) => <ProjectCard key={project.number} project={project} layout="detail" />)}
         {selected.length === 0 && <div className="mx-auto my-8 max-w-[1400px] rounded-2xl bg-white px-6 py-12 md:p-12"><p className="text-xl font-medium tracking-[-0.04em]">Próximamente compartiremos nuestros proyectos de {service.label.toLowerCase()}.</p><p className="mt-3 text-[#4b4b49]">Mientras tanto, contactanos para conversar sobre tu idea.</p></div>}
       </div>

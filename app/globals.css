@@ -131,18 +131,25 @@ body { margin: 0; background: #f7f7f5; font-family: "Kairos Arial", Arial, sans-
 .navbar-links { font-family: "Host Grotesk", Arial, sans-serif; }
 .font-host { font-family: "Host Grotesk", Arial, sans-serif; }
 
-.section-heading-layout {
-  display: grid;
+.section-heading-layout,
+.section-content-layout {
   width: calc(100% - 48px);
   max-width: 1600px;
   margin-inline: auto;
+}
+
+.section-heading-layout {
+  display: grid;
   gap: 24px;
 }
 
 @media (min-width: 768px) {
-  .section-heading-layout {
+  .section-heading-layout,
+  .section-content-layout {
     width: calc(100% - 32px);
     padding-inline: 40px;
+  }
+  .section-heading-layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 600px);
   }
 }
