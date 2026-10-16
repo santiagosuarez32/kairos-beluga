@@ -22,260 +22,10 @@ function AnimatedHeading({ children }: { children: string }) {
   );
 }
 
-const projects = [
-  {
-    "number": "01",
-    "name": "Avianca - Gol",
-    "brands": "Avianca - Gol",
-    "category": "Stand",
-    "location": "Expo FIT",
-    "year": "2026",
-    "surface": "56 m²",
-    "contractor": "BDG SA",
-    "image": "/projects-hq/avianca-gol/01-hq.jpg",
-    "images": [
-      "/projects-hq/avianca-gol/01-hq.jpg",
-      "/projects-hq/avianca-gol/02-hq.jpg",
-      "/projects-hq/avianca-gol/03-hq.jpg",
-      "/projects-hq/avianca-gol/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Obra terminada",
-      "Montaje",
-      "Construcción"
-    ],
-    "position": "center",
-    "description": "Stand de aerolíneas con estructura de carpintería satinada, revestimientos corporativos, mostradores, señalética digital, iluminación integrada y áreas de atención al público."
-  },
-  {
-    "number": "02",
-    "name": "VTH",
-    "brands": "VTH",
-    "category": "Stand",
-    "location": "Expo Automechanika",
-    "year": "2026",
-    "surface": "48 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/vth/01-hq.jpg",
-    "images": [
-      "/projects-hq/vth/01-hq.jpg",
-      "/projects-hq/vth/02-hq.jpg",
-      "/projects-hq/vth/03-hq.jpg",
-      "/projects-hq/vth/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Montaje",
-      "Proceso constructivo",
-      "Render"
-    ],
-    "position": "center",
-    "description": "Stand de gran impacto visual, con arcos envolventes de iluminación neón LED, pantalla publicitaria, con áreas de atención y sala de reuniones integrada."
-  },
-  {
-    "number": "03",
-    "name": "Medicube - Dr. Melaxin",
-    "brands": "Medicube - Dr. Melaxin",
-    "category": "Stand",
-    "location": "Expo Pigmento Fest",
-    "year": "2026",
-    "surface": "58 m²",
-    "contractor": "Mia Producciones",
-    "image": "/projects-hq/medicube-dr-melaxin/01-hq.jpg",
-    "images": [
-      "/projects-hq/medicube-dr-melaxin/01-hq.jpg",
-      "/projects-hq/medicube-dr-melaxin/02-hq.jpg",
-      "/projects-hq/medicube-dr-melaxin/03-hq.jpg",
-      "/projects-hq/medicube-dr-melaxin/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Medicube",
-      "Dr. Melaxin",
-      "Montaje"
-    ],
-    "position": "center",
-    "description": "Stand multimarca, con mostrador curvo retroiluminado, cartelería de corpóreos neón y estructuras divisorias tubulares. Con predominancia de colores e iluminación para cada marca, respetando su autonomía y siguiendo con la estética de ambas."
-  },
-  {
-    "number": "04",
-    "name": "Cdimex · Multimarca",
-    "brands": "Cher - Ben Simon - Sarkany - Tucci - Al Shams",
-    "category": "Stand",
-    "location": "Expo Pigmento Fest",
-    "year": "2026",
-    "surface": "48 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/cdimex-multimarca/02-hq.jpg",
-    "images": [
-      "/projects-hq/cdimex-multimarca/02-hq.jpg",
-      "/projects-hq/cdimex-multimarca/01-hq.jpg",
-      "/projects-hq/cdimex-multimarca/03-hq.jpg",
-      "/projects-hq/cdimex-multimarca/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Obra terminada",
-      "Montaje",
-      "Construcción"
-    ],
-    "position": "center",
-    "description": "Construcción de stand modular de tipo isla, con cenefa en altura, mostradores de exhibición vidriados y mobiliario a medida para marcas de lujo."
-  },
-  {
-    "number": "05",
-    "name": "Turopeo",
-    "brands": "Turopeo",
-    "category": "Stand",
-    "location": "Expo FIT",
-    "year": "2026",
-    "surface": "28 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/turopeo/01-hq.jpg",
-    "images": [
-      "/projects-hq/turopeo/01-hq.jpg",
-      "/projects-hq/turopeo/02-hq.jpg",
-      "/projects-hq/turopeo/03-hq.jpg",
-      "/projects-hq/turopeo/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Detalle",
-      "Montaje",
-      "Construcción"
-    ],
-    "position": "center",
-    "description": "Stand de exposición con estructura modular, revestimientos gráficos, mostradores personalizados, iluminación decorativa y elementos vegetales integrados para atención y exhibición de marca."
-  },
-  {
-    "number": "06",
-    "name": "Barbieri",
-    "brands": "Barbieri",
-    "category": "Stand",
-    "location": "Expo BATEV",
-    "year": "2026",
-    "surface": "110 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/barbieri/01-hq.jpg",
-    "images": [
-      "/projects-hq/barbieri/01-hq.jpg",
-      "/projects-hq/barbieri/02-hq.jpg",
-      "/projects-hq/barbieri/03-hq.jpg",
-      "/projects-hq/barbieri/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Montaje",
-      "Construcción",
-      "Render"
-    ],
-    "position": "center",
-    "description": "Construcción de stand con forma diamantada, trilogía de pórticos realizados a partir de los perfiles galvanizados de la marca, iluminación LED integrada y exhibidores de carpintería."
-  },
-  {
-    "number": "07",
-    "name": "Pantene - Herbal Essences",
-    "brands": "Pantene - Herbal Essences",
-    "category": "Stand",
-    "location": "Expo Pigmento Fest",
-    "year": "2026",
-    "surface": "48 m²",
-    "contractor": "New PGA",
-    "image": "/projects-hq/pantene-herbal/01-hq.jpg",
-    "images": [
-      "/projects-hq/pantene-herbal/01-hq.jpg",
-      "/projects-hq/pantene-herbal/02-hq.jpg",
-      "/projects-hq/pantene-herbal/03-hq.jpg",
-      "/projects-hq/pantene-herbal/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Obra terminada",
-      "Montaje",
-      "Construcción"
-    ],
-    "position": "center",
-    "description": "Construcción de stand doble integrando ambas marcas, con carpintería premium, iluminación LED, estanterías iluminadas, área de interacción/photo opportunity y áreas de venta."
-  },
-  {
-    "number": "08",
-    "name": "Coty · Multimarca",
-    "brands": "Rimmel - Calvin Klein - Adidas - Boss - Nautica - Davidoff - Sally Hansen",
-    "category": "Stand",
-    "location": "Expo Pigmento Fest",
-    "year": "2026",
-    "surface": "48 m²",
-    "contractor": "Mia Producciones",
-    "image": "/projects-hq/coty-multimarca/01-hq.jpg",
-    "images": [
-      "/projects-hq/coty-multimarca/01-hq.jpg",
-      "/projects-hq/coty-multimarca/02-hq.jpg",
-      "/projects-hq/coty-multimarca/03-hq.jpg",
-      "/projects-hq/coty-multimarca/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Obra terminada",
-      "Montaje",
-      "Construcción"
-    ],
-    "position": "center",
-    "description": "Construcción de stand interactivo, con activación en formato rueda de la fortuna, arcos iluminados, mostradores vidriados y sector promocional."
-  },
-  {
-    "number": "09",
-    "name": "Biferdil",
-    "brands": "Biferdil",
-    "category": "Góndola",
-    "location": "Shopping Bendu",
-    "year": "",
-    "surface": "6 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/biferdil/01-hq.jpg",
-    "images": [
-      "/projects-hq/biferdil/01-hq.jpg",
-      "/projects-hq/biferdil/02-hq.jpg",
-      "/projects-hq/biferdil/03-hq.jpg",
-      "/projects-hq/biferdil/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Construcción",
-      "Construcción",
-      "Render"
-    ],
-    "position": "center",
-    "description": "Góndola comercial con estructura satinada simil laqueada, mobiliario personalizado, vitrinas iluminadas y detalles gráficos para exhibición y atención al público."
-  },
-  {
-    "number": "10",
-    "name": "Fera",
-    "brands": "Fera",
-    "category": "Stand",
-    "location": "Expo Feria del Libro",
-    "year": "2026",
-    "surface": "12 m²",
-    "contractor": "Gauss Rubrican SA",
-    "image": "/projects-hq/fera/01-hq.jpg",
-    "images": [
-      "/projects-hq/fera/01-hq.jpg",
-      "/projects-hq/fera/02-hq.jpg",
-      "/projects-hq/fera/03-hq.jpg",
-      "/projects-hq/fera/04-hq.jpg"
-    ],
-    "phases": [
-      "Obra terminada",
-      "Construcción",
-      "Proceso constructivo",
-      "Render"
-    ],
-    "position": "center",
-    "description": "Stand con temática “bosque de fantasía”, con arcos de carpintería, vegetación colgante, iluminación LED cálida y estanterías iluminadas para una mejor exhibición de los libros y su venta."
-  }
-];
 
-type Project = (typeof projects)[number];
+
+import { projects, type Project } from "@/lib/projects";
+import { services } from "@/lib/services";
 
 function PhotoViewer({ project, activeImage, onChange, onClose }: { project: Project; activeImage: number; onChange: (direction: number) => void; onClose: () => void }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -342,7 +92,7 @@ function PhotoViewer({ project, activeImage, onChange, onClose }: { project: Pro
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, layout = "card", index = 0 }: { project: Project; layout?: "card" | "detail"; index?: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const [viewerOpen, setViewerOpen] = useState(false);
@@ -370,16 +120,39 @@ function ProjectCard({ project }: { project: Project }) {
   }, []);
 
   useEffect(() => {
-    if (!hasGallery || !isVisible || !isTabVisible || viewerOpen) return;
+    if (layout === "detail" || !hasGallery || !isVisible || !isTabVisible || viewerOpen) return;
     const timer = window.setTimeout(() => {
       setActiveImage((current) => (current + 1) % images.length);
     }, 2500);
     return () => window.clearTimeout(timer);
-  }, [activeImage, hasGallery, images.length, isVisible, isTabVisible, viewerOpen]);
+  }, [activeImage, hasGallery, images.length, isVisible, isTabVisible, viewerOpen, layout]);
 
   const changeImage = (direction: number) => {
     setActiveImage((current) => (current + direction + images.length) % images.length);
   };
+
+  if (layout === "detail") return (
+    <article className="grid items-center gap-8 border-t border-black/15 py-10 md:py-14 lg:grid-cols-2 lg:gap-12">
+      <div ref={cardRef} className="min-w-0">
+        <button ref={openButtonRef} type="button" onClick={() => setViewerOpen(true)} aria-label={`Ampliar foto de ${project.name}`} className="group relative block h-[280px] w-full cursor-zoom-in overflow-hidden rounded-[28px] bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ef3b32] md:h-[440px]">
+          <Image src={images[activeImage]} alt={`${project.name}: ${phase}`} fill unoptimized sizes="(max-width: 1024px) 100vw, 640px" className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectPosition: project.position }} />
+          <span className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-black/15 bg-[#f7f7f5] px-5 py-3 text-sm font-medium tracking-[-0.03em] text-[#191919]"><FiMaximize2 size={17} aria-hidden="true" />Ver foto</span>
+        </button>
+        <div className="mt-3 grid grid-cols-4 gap-3" aria-label={`Fotos de ${project.name}`}>
+          {images.map((image, imageIndex) => <button key={image} type="button" onClick={() => setActiveImage(imageIndex)} aria-label={`Ver foto ${imageIndex + 1}: ${project.phases[imageIndex]}`} aria-pressed={activeImage === imageIndex} className={`relative h-16 overflow-hidden rounded-2xl border transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ef3b32] md:h-[84px] ${activeImage === imageIndex ? "border-[#ef3b32] ring-1 ring-[#ef3b32]" : "border-black/15 opacity-60 hover:opacity-100"}`}><Image src={image} alt="" fill unoptimized sizes="160px" className="object-cover" /></button>)}
+        </div>
+      </div>
+      <div className="min-w-0 space-y-5">
+        <p className="text-lg font-medium tracking-[-0.03em] text-[#ef3b32]">{String(index + 1).padStart(2, "0")}</p>
+        <div className="flex flex-wrap gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="rounded-full border border-black/20 px-3 py-1.5 text-sm tracking-[-0.02em] text-[#4b4b49]">{value}</span>)}</div>
+        <h3 className="text-[clamp(2rem,3.4vw,3.5rem)] font-medium leading-[1.02] tracking-[-0.05em]">{project.name}</h3>
+        {project.name.includes("Multimarca") && <p className="text-sm leading-relaxed text-black/55">{project.brands}</p>}
+        <p className="text-base leading-relaxed tracking-[-0.02em] text-[#4b4b49] md:text-lg">{project.description}</p>
+        <p className="text-sm text-black/55">Contratado por: <strong className="font-medium text-[#191919]">{project.contractor}</strong></p>
+      </div>
+      {viewerOpen && <PhotoViewer project={project} activeImage={activeImage} onChange={changeImage} onClose={() => { setViewerOpen(false); openButtonRef.current?.focus({ preventScroll: true }); }} />}
+    </article>
+  );
 
   return (
     <article className="project-stage relative h-[calc(68svh-16px)] min-h-[464px] overflow-visible pt-4 md:h-[calc(100svh-120px)] md:min-h-[500px] md:pt-6">
@@ -437,6 +210,8 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function Projects() {
+  const [category, setCategory] = useState("");
+  const visibleProjects = projects.filter((project) => !category || project.category === category);
   return (
     <section id="proyectos" className="projects-section font-host bg-[#f7f7f5] pb-10 text-[#141411] md:pb-20">
       <header className="mx-auto grid w-[calc(100%-32px)] max-w-[1600px] gap-6 pb-4 pt-12 md:grid-cols-[0.72fr_1.28fr] md:px-10 md:pb-5 md:pt-16">
@@ -448,8 +223,12 @@ export function Projects() {
         </h2>
       </header>
 
+      <div className="mx-auto flex max-w-[1500px] flex-wrap gap-2 px-5 py-6" aria-label="Filtrar proyectos por servicio">
+        {[{ label: "Todos", category: "" }, ...services].map((service) => <button key={service.category} type="button" onClick={() => setCategory(service.category)} aria-pressed={category === service.category} className={`rounded-full border border-black/25 px-4 py-2 text-sm transition ${category === service.category ? "bg-[#191919] text-white" : "hover:bg-black/10"}`}>{service.label}</button>)}
+      </div>
+      {visibleProjects.length === 0 && <p role="status" className="px-6 py-12 text-center">Próximamente compartiremos proyectos de esta categoría. <a href="#contacto" className="underline">Consultanos por tu proyecto.</a></p>}
       <div className="projects-list mx-auto w-[calc(100%-24px)] max-w-[1600px] md:w-[calc(100%-40px)]">
-        {projects.map((project) => <ProjectCard key={project.number} project={project} />)}
+        {visibleProjects.map((project) => <ProjectCard key={project.number} project={project} />)}
       </div>
     </section>
   );

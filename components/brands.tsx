@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 const brands = [
+  { name: "New PGA", src: "/brands/new-pga.png" },
+  { name: "BDG Buenos Aires", src: "/brands/bdg.png" },
   {
     "name": "CHER.",
     "src": "/brands/cher.svg"
