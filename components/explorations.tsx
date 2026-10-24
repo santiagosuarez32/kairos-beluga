@@ -32,16 +32,15 @@ export function Explorations() {
   return (
     <section className="explorations overflow-hidden bg-[#f7f7f5] py-12 text-[#141411] md:py-16">
       <div className="section-heading-layout">
-        <p className="font-host text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]">
+        <p className="font-host text-[18px] font-medium uppercase tracking-[-0.5px] md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> NUESTRA VISIÓN <span className="text-[#ef3b32]">&#125;</span>
         </p>
 
         <div className="grid gap-6">
-          <h2 className="font-host text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
-            Espacios que<br />
-            conectan.
+          <h2 className="font-host text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium section-title tracking-[-0.05em]">
+            Espacios que conectan.
           </h2>
-          <p className="max-w-[720px] pb-1 font-host text-xl font-medium leading-[1.3] tracking-[-0.04em] text-[#4b4b49] md:text-[clamp(1.25rem,1.65vw,1.7rem)]">
+          <p className="max-w-[720px] pb-1 font-host text-xl font-medium tracking-[-0.04em] text-[#4b4b49] md:text-[clamp(1.25rem,1.65vw,1.7rem)]">
             Construimos espacios que transforman marcas en experiencias memorables.
           </p>
         </div>

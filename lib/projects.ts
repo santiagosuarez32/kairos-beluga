@@ -248,6 +248,110 @@ export const projects = [
     ],
     "position": "center",
     "description": "Stand con temática “bosque de fantasía”, con arcos de carpintería, vegetación colgante, iluminación LED cálida y estanterías iluminadas."
+  },
+  {
+    "number": "11",
+    "name": "Caramel Store",
+    "brands": "Caramel Store",
+    "category": "Góndola",
+    "location": "Shopping Unicenter",
+    "year": "",
+    "surface": "12 m²",
+    "contractor": "",
+    "image": "/projects-hq/caramel-store/01-hq.jpg",
+    "images": [
+      "/projects-hq/caramel-store/01-hq.jpg",
+      "/projects-hq/caramel-store/02-hq.jpg",
+      "/projects-hq/caramel-store/03-hq.jpg",
+      "/projects-hq/caramel-store/04-hq.jpg"
+    ],
+    "phases": [
+      "Obra terminada",
+      "Montaje",
+      "Construcción",
+      "Construcción"
+    ],
+    "position": "center",
+    "description": "Góndola comercial con mobiliario a medida, revestimientos personalizados, iluminación integrada y exhibidores para golosinas, bebidas y productos de merchandising."
+  },
+  {
+    "number": "12",
+    "name": "Zero Gluten",
+    "brands": "Zero Gluten",
+    "category": "Local gastronómico",
+    "location": "Río Gallegos",
+    "year": "",
+    "surface": "100 m²",
+    "contractor": "",
+    "image": "/projects-hq/zero-gluten/01-hq.jpg",
+    "images": [
+      "/projects-hq/zero-gluten/01-hq.jpg",
+      "/projects-hq/zero-gluten/02-hq.jpg",
+      "/projects-hq/zero-gluten/03-hq.jpg",
+      "/projects-hq/zero-gluten/04-hq.jpg",
+      "/projects-hq/zero-gluten/05-hq.jpg",
+      "/projects-hq/zero-gluten/06-hq.jpg"
+    ],
+    "phases": [
+      "Obra terminada",
+      "Interior",
+      "Interior",
+      "Detalle",
+      "Construcción",
+      "Estado previo"
+    ],
+    "position": "center",
+    "description": "Local gastronómico con fachada intervenida, marquesina y gráfica corpórea. Interiorismo a medida con mobiliario personalizado, exhibidores, heladera circular, elementos en impresión 3D, detalles en herrería, iluminación cálida y revestimientos decorativos."
+  },
+  {
+    "number": "13",
+    "name": "Moon Bell",
+    "brands": "Moon Bell",
+    "category": "Local comercial",
+    "location": "Río Gallegos",
+    "year": "",
+    "surface": "36 m²",
+    "contractor": "",
+    "image": "/projects-hq/moon-bell/01-hq.jpg",
+    "images": [
+      "/projects-hq/moon-bell/01-hq.jpg",
+      "/projects-hq/moon-bell/02-hq.jpg",
+      "/projects-hq/moon-bell/03-hq.jpg",
+      "/projects-hq/moon-bell/04-hq.jpg"
+    ],
+    "phases": [
+      "Obra terminada",
+      "Interior",
+      "Interior",
+      "Construcción"
+    ],
+    "position": "center",
+    "description": "Local comercial estilo neoclásico/contemporáneo: fachada blanca, techos a dos aguas oscuros, zócalos de madera, amplios ventanales e iluminación cálida LED focalizada."
+  },
+  {
+    "number": "14",
+    "name": "Kiosco XD",
+    "brands": "Kiosco XD",
+    "category": "Local comercial",
+    "location": "Río Gallegos",
+    "year": "",
+    "surface": "53 m²",
+    "contractor": "",
+    "image": "/projects-hq/kiosco-xd/01-hq.jpg",
+    "images": [
+      "/projects-hq/kiosco-xd/01-hq.jpg",
+      "/projects-hq/kiosco-xd/02-hq.jpg",
+      "/projects-hq/kiosco-xd/03-hq.jpg",
+      "/projects-hq/kiosco-xd/04-hq.jpg"
+    ],
+    "phases": [
+      "Obra terminada",
+      "Montaje",
+      "Interior",
+      "Detalle"
+    ],
+    "position": "center",
+    "description": "Local comercial con fachada temática, estructura curva, iluminación LED integrada, gráfica corpórea y mobiliario a medida para exhibición de productos y atención al público."
   }
 ];
 

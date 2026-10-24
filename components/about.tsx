@@ -24,8 +24,8 @@ export function About() {
   return (
     <section id="nosotros" className="font-host bg-[#f7f7f5] py-12 text-[#191919] md:py-16">
       <div className="section-heading-layout">
-        <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="font-bold text-[#ef3b32]">&#123;</span> Nosotros <span className="font-bold text-[#ef3b32]">&#125;</span></p>
-        <h2 className="about-heading text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
+        <p className="text-[18px] font-medium uppercase tracking-[-0.5px] md:text-[20px]"><span className="font-bold text-[#ef3b32]">&#123;</span> Nosotros <span className="font-bold text-[#ef3b32]">&#125;</span></p>
+        <h2 className="about-heading text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium section-title tracking-[-0.05em]">
           <span className="block">Kairos es más que construir</span>
           <span className="block">espacios: transformamos ideas</span>
           <span className="block">en marcas que crecen.</span>

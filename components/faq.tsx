@@ -32,13 +32,13 @@ export function Faq() {
   return (
     <section id="faq" className="faq-section bg-[#f7f7f5] py-12 text-[#141411] md:py-16">
       <div className="mx-auto w-[calc(100%-48px)] max-w-[900px] md:w-[calc(100%-32px)] md:px-10">
-        <p className="mb-10 text-center font-host text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]">
+        <p className="mb-10 text-center font-host text-[18px] font-medium uppercase tracking-[-0.5px] md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> FAQ <span className="text-[#ef3b32]">&#125;</span>
         </p>
 
         <div className="grid gap-6">
           <div className="text-left">
-            <h2 className="faq-heading whitespace-nowrap font-host text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.05em]">
+            <h2 className="faq-heading whitespace-nowrap font-host text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium section-title tracking-[-0.05em]">
               ¿Tenés más preguntas?
             </h2>
           </div>
@@ -52,14 +52,14 @@ export function Faq() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpenQuestion(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between gap-6 py-4 text-left font-host text-[18px] font-normal leading-[1.3] tracking-[-0.03em] md:py-5 md:text-[22px]"
+                    className={`flex w-full items-center justify-between gap-6 pt-4 text-left font-host text-[18px] font-normal leading-[1.3] tracking-[-0.03em] md:pt-5 md:text-[22px] ${isOpen ? "pb-2" : "pb-4 md:pb-5"}`}
                   >
                     <span>{item.question}</span>
                     <FiPlus className={`size-6 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} strokeWidth={1.5} />
                   </button>
                   <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                     <div className="overflow-hidden">
-                      <p className={`max-w-none pb-4 font-host text-[17px] leading-[1.25] tracking-[-0.03em] text-[#4b4b49] transition-all duration-300 ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"}`}>
+                      <p className={`max-w-none pb-4 font-host text-[17px] tracking-[-0.03em] text-[#4b4b49] transition-all duration-300 ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"}`}>
                         {item.answer}
                       </p>
                     </div>

@@ -26,7 +26,7 @@ export function Footer({ homePrefix = "" }: { homePrefix?: string }) {
           <a href={`${homePrefix}#top`} aria-label="Kairos Beluga, volver al inicio" className="rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">
             <Image src="/logo.png" alt="Kairos Beluga" width={180} height={60} className="h-auto w-28 brightness-0" />
           </a>
-          <h2 className="mt-9 text-[28px] font-medium leading-[1.15] tracking-[-0.045em] md:text-[32px]">Conectá con Kairos.<br />Seguinos en redes.</h2>
+          <h2 className="mt-9 text-[28px] font-medium leading-[var(--text-leading)] tracking-[-0.045em] md:text-[32px]">Conectá con Kairos.<br />Seguinos en redes.</h2>
           <nav aria-label="Redes y contacto" className="mt-8 flex items-center justify-center gap-3">
             {socials.map(({ name, href, Icon }) => (
               <a key={name} href={href} target={href.startsWith("https") ? "_blank" : undefined} rel={href.startsWith("https") ? "noreferrer" : undefined} aria-label={name} title={name} className="group grid size-12 place-items-center rounded-full border border-black/10 bg-white/75 transition-colors hover:border-black/30 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">

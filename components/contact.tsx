@@ -3,9 +3,25 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { FiArrowUpRight, FiCheck, FiChevronDown, FiInstagram, FiMail, FiMapPin } from "react-icons/fi";
 import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { SmoothInput, SmoothTextarea } from "@/components/ui/smooth-field";
+
+type FieldName = "name" | "email" | "message";
+type FieldErrors = Partial<Record<FieldName, string>>;
+
+function validateField(field: HTMLInputElement | HTMLTextAreaElement): string {
+  const value = field.value.trim();
+  if (!value) return { name: "Ingresá tu nombre.", email: "Ingresá tu email.", message: "Contanos un poco sobre tu proyecto." }[field.name as FieldName];
+  if (field.name === "name" && value.length < 2) return "Ingresá al menos 2 caracteres.";
+  if (field.name === "email" && (field.validity.typeMismatch || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) return "Ingresá un email válido, por ejemplo nombre@dominio.com.";
+  if (field.name === "message" && value.length < 10) return "Agregá un poco más de detalle (al menos 10 caracteres).";
+  if (field.maxLength > 0 && value.length > field.maxLength) return `Usá hasta ${field.maxLength} caracteres.`;
+  return "";
+}
 
 export function Contact() {
   const [prepared, setPrepared] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [validFields, setValidFields] = useState<Partial<Record<FieldName, boolean>>>({});
   const services = ["Stands y eventos", "Espacios comerciales", "Exhibidores", "Asesoramiento", "Otro proyecto"];
   const [service, setService] = useState("");
   const [serviceOpen, setServiceOpen] = useState(false);
@@ -31,29 +47,68 @@ export function Contact() {
   }
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!service) {
-      setServiceError(true);
-      setServiceOpen(true);
-      serviceButton.current?.focus();
+    const form = event.currentTarget;
+    const nextErrors: FieldErrors = {};
+    const nextValid: Partial<Record<FieldName, boolean>> = {};
+    for (const name of ["name", "email", "message"] as const) {
+      const input = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement;
+      const error = validateField(input);
+      nextValid[name] = !error;
+      if (error) nextErrors[name] = error;
+    }
+    setErrors(nextErrors);
+    setValidFields(nextValid);
+    setServiceError(!service);
+    setPrepared(false);
+    if (Object.keys(nextErrors).length || !service) {
+      const first = nextErrors.name ? "name" : nextErrors.email ? "email" : !service ? "service" : "message";
+      if (first === "service") {
+        setServiceOpen(true);
+        serviceButton.current?.focus();
+      } else {
+        (form.elements.namedItem(first) as HTMLElement)?.focus();
+      }
       return;
     }
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(form);
+    for (const name of ["name", "email", "message"]) data.set(name, String(data.get(name) ?? "").trim());
     const subject = `Nuevo proyecto: ${data.get("service")}`;
     const body = `Nombre: ${data.get("name")}\nEmail: ${data.get("email")}\nTipo de proyecto: ${data.get("service")}\n\n${data.get("message")}`;
     window.location.href = `mailto:kairosbeluga@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setPrepared(true);
   }
-  const field = "mt-2 w-full rounded-none border-0 border-b border-black/15 bg-transparent px-0 pb-2.5 text-base font-normal text-[#191919] placeholder:text-[#818187] focus:border-[#ef3b32] focus:outline-none focus:ring-0";
+  const field = "mt-2 w-full rounded-none border-0 border-b border-black/15 bg-transparent px-0 pb-2.5 text-base font-normal leading-[var(--text-leading)] tracking-[-0.02em] text-[#191919] placeholder:text-[#818187] focus:border-[#ef3b32] focus:outline-none focus:ring-0 aria-[invalid=true]:border-[#ef3b32]";
+  function validationProps(name: FieldName) {
+    return {
+      "data-valid": validFields[name] ? "true" : undefined,
+      "aria-invalid": Boolean(errors[name]),
+      "aria-describedby": errors[name] ? `contact-${name}-error` : undefined,
+      onBlur: (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const error = validateField(event.currentTarget);
+        setValidFields((previous) => ({ ...previous, [name]: !error }));
+        setErrors((previous) => ({ ...previous, [name]: error }));
+      },
+      onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setPrepared(false);
+        const error = validateField(event.currentTarget);
+        setValidFields((previous) => ({ ...previous, [name]: !error }));
+        if (errors[name]) {
+          setErrors((previous) => ({ ...previous, [name]: error }));
+        }
+      },
+    };
+  }
+  const errorMessage = (name: FieldName) => errors[name] && <span id={`contact-${name}-error`} role="status" className="mt-2 block text-xs font-normal leading-[var(--text-leading)] text-[#ba2922]">{errors[name]}</span>;
   return (
     <section id="contacto" aria-labelledby="contact-title" className="scroll-mt-24 bg-[#f7f7f5] px-3 pb-16 font-host md:px-5 md:pb-24">
       <div className="contact-panel relative isolate mx-auto grid max-w-[1400px] gap-12 overflow-hidden rounded-[32px] p-6 md:grid-cols-2 md:gap-10 md:p-12 lg:p-14">
         <div aria-hidden="true" className="contact-ribbon pointer-events-none absolute inset-0 -z-10" />
-        <div className="flex flex-col justify-between gap-6">
+        <div className="flex flex-col gap-8">
           <div>
 
-            <h2 id="contact-title" className="max-w-[580px] text-[clamp(2.25rem,3.6vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.065em]">Construyamos<br />tu próximo<br />espacio.</h2>
+            <h2 id="contact-title" className="max-w-[580px] text-[clamp(2rem,2.7vw,2.75rem)] font-medium leading-[var(--text-leading)] tracking-[-0.065em]">Construyamos<br /><span className="whitespace-nowrap">tu próximo espacio.</span></h2>
           </div>
-          <div className="grid gap-4 text-base tracking-[-0.03em]">
+          <div className="contact-details grid gap-4 text-base tracking-[-0.03em]">
             <a href="mailto:kairosbeluga@gmail.com" className="group flex items-center gap-4">
               <span className="grid size-14 shrink-0 place-items-center rounded-2xl border border-white/70 bg-white/60 backdrop-blur-md"><FiMail size={22} aria-hidden="true" /></span>
               <span><span className="block font-medium">Escribinos</span><span className="break-all group-hover:underline">kairosbeluga@gmail.com</span></span>
@@ -79,11 +134,11 @@ export function Contact() {
             </nav>
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="min-w-0 self-start rounded-[26px] border border-white/80 bg-[#f7f7f8] p-5 md:p-7 lg:p-8">
+        <form noValidate onSubmit={handleSubmit} className="contact-form min-w-0 self-start rounded-[26px] border border-white/80 bg-[#f7f7f8] p-5 md:p-7 lg:p-8">
           <h3 className="mb-5 text-[clamp(1.7rem,2.5vw,2.4rem)] font-medium leading-tight tracking-[-0.055em]">Contanos tu idea</h3>
           <div className="grid gap-4">
-            <label className="text-sm font-medium" htmlFor="contact-name">Tu nombre<input id="contact-name" name="name" autoComplete="name" required maxLength={120} placeholder="Nombre y apellido" className={field} /></label>
-            <label className="text-sm font-medium" htmlFor="contact-email">Email<input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} placeholder="Tu correo electrónico" className={field} /></label>
+            <label className="text-sm font-medium" htmlFor="contact-name">Tu nombre<SmoothInput id="contact-name" name="name" autoComplete="name" required minLength={2} maxLength={120} placeholder="Nombre y apellido" className={field} {...validationProps("name")} />{errorMessage("name")}</label>
+            <label className="text-sm font-medium" htmlFor="contact-email">Email<input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} placeholder="Tu correo electrónico" className={field} {...validationProps("email")} />{errorMessage("email")}</label>
             <div ref={serviceMenu} className="relative">
               <label id="contact-service-label" htmlFor="contact-service" className="text-sm font-medium">¿Qué tenés en mente?</label>
               <input type="hidden" name="service" value={service} />
@@ -125,10 +180,10 @@ export function Contact() {
               )}
               {serviceError && <p id="contact-service-error" className="mt-2 text-xs text-[#ef3b32]">Seleccioná el tipo de proyecto.</p>}
             </div>
-            <label className="text-sm font-medium" htmlFor="contact-message">Más sobre tu proyecto<textarea id="contact-message" name="message" required maxLength={3000} rows={3} placeholder="Contanos qué necesitás, dónde y para cuándo." className={`${field} resize-y`} /></label>
+            <label className="text-sm font-medium" htmlFor="contact-message">Más sobre tu proyecto<SmoothTextarea id="contact-message" name="message" required minLength={10} maxLength={3000} rows={3} placeholder="Contanos qué necesitás, dónde y para cuándo." className={`${field} resize-y`} {...validationProps("message")} />{errorMessage("message")}</label>
           </div>
           <button type="submit" className="mt-5 inline-flex items-center gap-3 rounded-full bg-[#191919] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#ef3b32] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ef3b32]">Preparar correo<FiArrowUpRight size={18} /></button>
-          <p className="mt-3 text-xs leading-relaxed text-[#68686b]" role="status">{prepared ? "Correo preparado. Completá el envío desde tu aplicación de email. Si no se abrió, escribinos a kairosbeluga@gmail.com." : "Se abrirá tu aplicación de email con el mensaje listo para enviar."}</p>
+          <p className="mt-3 text-xs text-[#68686b]" role="status">{prepared ? "Correo preparado. Completá el envío desde tu aplicación de email. Si no se abrió, escribinos a kairosbeluga@gmail.com." : "Se abrirá tu aplicación de email con el mensaje listo para enviar."}</p>
         </form>
       </div>
     </section>

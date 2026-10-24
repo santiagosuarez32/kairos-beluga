@@ -145,10 +145,10 @@ export function ProjectCard({ project, layout = "card" }: { project: Project; la
       <div className="min-w-0 space-y-5">
         
         <div className="flex flex-wrap items-stretch gap-2">{[project.location, project.year, project.surface, phase].filter(Boolean).map((value, valueIndex) => <span key={valueIndex} className="inline-flex min-h-10 items-center justify-center whitespace-nowrap rounded-2xl border border-black/20 px-3.5 py-2 text-center text-sm leading-[1.35] tracking-[-0.02em] text-[#4b4b49]">{value.replace(/\n/g, " · ")}</span>)}</div>
-        <h3 className="text-[clamp(2rem,3.4vw,3.5rem)] font-medium leading-[1.02] tracking-[-0.05em]">{project.name}</h3>
-        {project.name.includes("Multimarca") && <p className="text-sm leading-relaxed text-black/55">{project.brands}</p>}
-        <p className="text-base leading-relaxed tracking-[-0.02em] text-[#4b4b49] md:text-lg">{project.description}</p>
-        <p className="text-sm text-black/55">Contratado por: <strong className="font-medium text-[#191919]">{project.contractor}</strong></p>
+        <h3 className="text-[clamp(2rem,3.4vw,3.5rem)] font-medium section-title tracking-[-0.05em]">{project.name}</h3>
+        {project.name.includes("Multimarca") && <p className="text-sm text-black/55">{project.brands}</p>}
+        <p className="text-base tracking-[-0.02em] text-[#4b4b49] md:text-lg">{project.description}</p>
+        {project.contractor && <p className="text-sm text-black/55">Contratado por: <strong className="font-medium text-[#191919]">{project.contractor}</strong></p>}
       </div>
       {viewerOpen && <PhotoViewer project={project} activeImage={activeImage} onChange={changeImage} onClose={() => { setViewerOpen(false); openButtonRef.current?.focus({ preventScroll: true }); }} />}
     </article>
@@ -193,13 +193,13 @@ export function ProjectCard({ project, layout = "card" }: { project: Project; la
 
         <div className="pointer-events-none absolute inset-x-5 bottom-6 z-[2] grid items-end gap-5 text-center md:inset-x-8 md:bottom-8 md:grid-cols-[1.5fr_0.5fr] md:text-left">
           <div>
-            {hasGallery && <p className="mb-4 text-[17px] font-medium leading-[1.35] tracking-[-0.5px] text-white underline decoration-white/80 decoration-1 underline-offset-[6px] md:text-[21px]">{phase}</p>}
+            {hasGallery && <p className="mb-4 text-[17px] font-medium tracking-[-0.5px] text-white underline decoration-white/80 decoration-1 underline-offset-[6px] md:text-[21px]">{phase}</p>}
             <h3 className={`max-w-[1050px] font-medium leading-[0.9] tracking-[-0.075em] ${project.name.length > 15 ? "text-[clamp(1.75rem,4vw,4.25rem)]" : "text-[clamp(3rem,7vw,7.5rem)]"}`}>{project.name}</h3>
           </div>
           <div className="mx-auto max-w-[330px] md:mx-0 md:max-w-[390px]">
-            {project.name.includes("Multimarca") && <p className="mb-2 text-xs font-medium leading-relaxed text-white/85">{project.brands}</p>}
-            <p className="whitespace-pre-line text-sm font-medium leading-[1.45] tracking-[-0.02em] text-white/90 md:text-base">{project.description}</p>
-            <p className="mt-2 text-xs leading-relaxed text-white/70">Contratado por: {project.contractor}</p>
+            {project.name.includes("Multimarca") && <p className="mb-2 text-xs font-medium text-white/85">{project.brands}</p>}
+            <p className="whitespace-pre-line text-base font-medium tracking-[-0.02em] text-white/90 md:text-lg">{project.description}</p>
+            {project.contractor && <p className="mt-2 text-sm text-white/70">Contratado por: {project.contractor}</p>}
             {hasGallery && <div className="mt-4 flex justify-center gap-1.5 md:justify-start">{images.map((_, index) => <span key={index} className={`h-1.5 rounded-full transition-all ${index === activeImage ? "w-6 bg-white" : "w-1.5 bg-white/50"}`} />)}</div>}
           </div>
         </div>
@@ -215,10 +215,10 @@ export function Projects() {
   return (
     <section id="proyectos" className="projects-section font-host bg-[#f7f7f5] pb-10 text-[#141411] md:pb-20">
       <header className="section-heading-layout pb-4 pt-12 md:pb-5 md:pt-16">
-        <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] text-[#191919] md:text-[20px]">
+        <p className="text-[18px] font-medium uppercase tracking-[-0.5px] text-[#191919] md:text-[20px]">
           <span className="text-[#ef3b32]">&#123;</span> PROYECTOS <span className="text-[#ef3b32]">&#125;</span>
         </p>
-        <h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">
+        <h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium section-title tracking-[-0.05em]">
           <AnimatedHeading>Espacios que hacen destacar.</AnimatedHeading>
         </h2>
       </header>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { FiArrowUpRight, FiMail } from "react-icons/fi";
@@ -58,10 +59,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c") }} />
     <Navbar />
     <section id="contacto" className="section-content-layout space-y-8 pb-12 pt-36 md:pb-20 md:pt-44">
-      <nav aria-label="Ruta de navegación" className="text-sm text-black/55"><a href="/" className="hover:underline">Inicio</a> / <a href="/#servicios" className="hover:underline">Servicios</a> / <strong className="text-black">{service.label}</strong></nav>
-      <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Servicios · {service.label} <span className="text-[#ef3b32]">&#125;</span></p>
+      <nav aria-label="Ruta de navegación" className="text-sm text-black/55"><Link href="/" className="hover:underline">Inicio</Link> / <Link href="/#servicios" className="hover:underline">Servicios</Link> / <strong className="text-black">{service.label}</strong></nav>
+      <p className="text-[18px] font-medium uppercase tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Servicios · {service.label} <span className="text-[#ef3b32]">&#125;</span></p>
       <h1 className="max-w-[980px] text-[clamp(2.5rem,5.8vw,6rem)] font-medium leading-[0.95] tracking-[-0.065em]">Hacemos tu idea realidad, construimos tu <span className="text-[#ef3b32]">{service.singular}</span>.</h1>
-      <p className="max-w-[720px] text-xl font-medium leading-[1.3] tracking-[-0.04em] text-[#4b4b49] md:text-2xl">Contactanos para cotizar tu nuevo proyecto.</p>
+      <p className="max-w-[720px] text-xl font-medium tracking-[-0.04em] text-[#4b4b49] md:text-2xl">Contactanos para cotizar tu nuevo proyecto.</p>
       <div className="flex flex-wrap gap-3">
         <a href="https://wa.me/5491136401776" className="inline-flex items-center gap-3 rounded-full bg-[#191919] px-6 py-3 text-base font-medium tracking-[-0.03em] text-white transition-transform duration-300 hover:scale-105"><FaWhatsapp size={18} aria-hidden="true" />WhatsApp 11 3640-1776</a>
         <a href="https://wa.me/5491166753340" className="inline-flex items-center gap-3 rounded-full bg-[#191919] px-6 py-3 text-base font-medium tracking-[-0.03em] text-white transition-transform duration-300 hover:scale-105"><FaWhatsapp size={18} aria-hidden="true" />WhatsApp 11 6675-3340</a>
@@ -70,8 +71,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     </section>
     <section id="proyectos" className="projects-section bg-[#f7f7f5] pb-10 text-[#191919] md:pb-20">
       <header className="section-heading-layout pb-4 pt-12 md:pb-5 md:pt-16">
-        <p className="text-[18px] font-medium uppercase leading-7 tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Proyectos <span className="text-[#ef3b32]">&#125;</span></p>
-        <div className="space-y-4"><h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium leading-[1.02] tracking-[-0.05em]">Nuestros proyectos.</h2></div>
+        <p className="text-[18px] font-medium uppercase tracking-[-0.5px] md:text-[20px]"><span className="text-[#ef3b32]">&#123;</span> Proyectos <span className="text-[#ef3b32]">&#125;</span></p>
+        <div className="space-y-4"><h2 className="text-[clamp(1.6rem,3.1vw,2.875rem)] md:text-[clamp(1.3rem,2.9vw,2.75rem)] font-medium section-title tracking-[-0.05em]">Nuestros proyectos.</h2></div>
       </header>
       <div className="section-content-layout">
         {selected.map((project) => <ProjectCard key={project.number} project={project} layout="detail" />)}
@@ -80,10 +81,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     </section>
     <section className="bg-[#f7f7f5] px-5 pb-24 pt-12 text-center md:px-10 md:pb-32 md:pt-16">
       <div className="mx-auto max-w-[860px]">
-        <p className="text-[clamp(5.5rem,14vw,14rem)] font-medium leading-[0.78] tracking-[-0.09em] text-[#ef3b32]">¿LISTOS?</p>
-        <h2 className="mx-auto mt-12 max-w-[580px] text-[18px] font-medium leading-[1.35] tracking-[-0.04em] text-[#262624] md:mt-14 md:text-[21px]">¿Listo para {service.article} {service.singular}? Cotizalo con nosotros.</h2>
+        <p className="ready-word text-[clamp(5.5rem,14vw,14rem)] font-medium leading-[0.78] tracking-[-0.09em] text-[#ef3b32]">¿LISTOS?</p>
+        <h2 className="mx-auto mt-12 max-w-[580px] text-[18px] font-medium section-title tracking-[-0.04em] text-[#262624] md:mt-14 md:text-[21px]">¿Listo para {service.article} {service.singular}? Cotizalo con nosotros.</h2>
         <a href="https://wa.me/5491136401776" className="mt-7 inline-flex items-center gap-3 rounded-full bg-black px-6 py-3 text-base font-medium tracking-[-0.03em] text-white transition-transform duration-300 hover:scale-105 md:mt-8">Escribinos por WhatsApp <FiArrowUpRight aria-hidden="true" /></a>
-        <a href="/" className="mx-auto mt-6 block w-fit text-sm text-black/55 transition-opacity hover:opacity-60">← Volver al inicio</a>
+        <Link href="/" className="mx-auto mt-6 block w-fit text-sm text-black/55 transition-opacity hover:opacity-60">← Volver al inicio</Link>
       </div>
     </section>
     <Footer homePrefix="/" />
